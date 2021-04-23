@@ -33,8 +33,8 @@ function Home(props) {
                 <Button variant="outline-info" onClick={handleLoginClick}>Login</Button>{' '}
                 <Button variant="outline-info" onClick={handleSignupClick}>SignUp</Button>  
             </div>
-            {/* { login ? <Login history={props.history} /> : null }
-            { signUp ? <SignUp history={props.history}/> : null } */}
+            { login ? <Login history={props.history} /> : null }
+            { signUp ? <SignUp history={props.history}/> : null }
 
         </div>
     )
