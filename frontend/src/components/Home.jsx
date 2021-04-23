@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+
 import Login from './Login'
 import SignUp from './SignUp'
+
+import Button from 'react-bootstrap/Button'
 
 function Home(props) {
 
@@ -24,14 +27,14 @@ function Home(props) {
     return (
         
         <div>
-            
+
             <h2 class="d-flex justify-content-center">Welcome!</h2>  
             <div class="d-flex justify-content-center">
                 <Button variant="outline-info" onClick={handleLoginClick}>Login</Button>{' '}
                 <Button variant="outline-info" onClick={handleSignupClick}>SignUp</Button>  
             </div>
-            { login ? <Login history={props.history} /> : null }
-            { signUp ? <SignUp history={props.history}/> : null }
+            {/* { login ? <Login history={props.history} /> : null }
+            { signUp ? <SignUp history={props.history}/> : null } */}
 
         </div>
     )
