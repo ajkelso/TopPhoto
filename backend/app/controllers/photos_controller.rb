@@ -1,9 +1,9 @@
 class PhotosController < ApplicationController
     def create
-        photo_params[:images].each do |img|
+        @photos = photo_params[:images].map do |img|
             Photo.create(image: img) # attaches the uploaded file
-        # ...
         end
+        render json: @photos, each_serializer: PhotoSerializer
     end
     
     private

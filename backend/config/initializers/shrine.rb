@@ -13,7 +13,7 @@ require "shrine"
   }
 # Shrine.storages[:cache_url] = Shrine::Storage::Url.new
 Shrine.plugin :activerecord
-Shrine.plugin :presign_endpoint
+# Shrine.plugin :presign_endpoint
 
 # def file_remote_url=(url)
 #   return if url.blank?
