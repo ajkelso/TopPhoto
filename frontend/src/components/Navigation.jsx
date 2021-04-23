@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 export default function Navigation() {
 
-    const isAuthenticated = useSelector(state => state.auth)
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
     const loggedInNav = () => {
         return(
