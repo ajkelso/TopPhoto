@@ -4,6 +4,7 @@ const initState = {
    };
    
 export function alertsReducer(state = initState, action){
+        console.log(action)
         switch (action.type) {
         case 'ADD_ERROR':
             return {

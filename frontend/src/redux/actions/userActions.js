@@ -3,10 +3,11 @@ const parseJSON = res => res.json()
 
 
 export function login(credentials){
-    return(dispatch) => {
+    return (dispatch) => {
+        dispatch({type: 'START_LOGIN'})
         loginRequest(credentials)
         .then(res => {
-            if (res.ok) {
+            if (!res.ok) {
                 return res.json()
             } else {
                 dispatch({type: 'LOGOUT'})
@@ -14,6 +15,7 @@ export function login(credentials){
             }
         })
         .then(userData => {
+            console.log(userData)
 
         })
     }

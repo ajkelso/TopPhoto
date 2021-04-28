@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import {Form, Row, Col } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { login } from '../redux/actions/userActions'
+import { loginRequest } from '../services/api'
 
 
 function Login() {
@@ -18,7 +19,19 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        login({user:{username: username.trim(), password}})
+        loginRequest({user:{username: username.trim(), password}})
+        .then(res => {
+            console.log(res.status)
+            if (res.status === 401) {
+                dispatch({type: 'LOGOUT'})
+                dispatch({type: 'ADD_ERROR', error: "Please Log In" })
+            } else {
+                return res.json()
+            }
+        })
+        .then(userData => {
+            
+        })
     }
 
 
