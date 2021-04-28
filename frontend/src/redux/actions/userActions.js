@@ -12,6 +12,7 @@ export function login(credentials, history){
                 dispatch({type: 'ADD_ERROR', error: res.error })
             } else {
                 setToken(res.jwt)
+                dispatch( {type: 'ADD_MESSAGE', message: res.message })
                 dispatch( {type: 'SET_USER', payload: res.user} )
             }
         })

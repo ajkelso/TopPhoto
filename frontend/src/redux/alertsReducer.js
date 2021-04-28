@@ -14,7 +14,7 @@ export function alertsReducer(state = initState, action){
         case 'ADD_MESSAGE' :
             return {
                 ...state,
-                error: action.message
+                message: action.message
             }
         case 'RESET_ALERT':
             return initState

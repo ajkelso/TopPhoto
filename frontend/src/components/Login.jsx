@@ -5,7 +5,7 @@ import { login } from '../redux/actions/userActions'
 
 
 
-function Login(props) {
+function Login() {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("") 
