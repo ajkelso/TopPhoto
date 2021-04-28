@@ -9,16 +9,18 @@ const loginHeaders = {
 }
 
 export function loginRequest(credentials) {
+    console.log(credentials);
     return fetch(URL + 'login', {
         method: "POST",
         headers: loginHeaders,
         body: JSON.stringify(credentials)
     })
     .then(parseJSON)
-    .then(res => {
-        if(res.token){
-            setToken(res.token)
-        }
-        return res
-    })
+    .then(res => console.log(res))
+    //     res => {
+    //     if(res.token){
+    //         setToken(res.token)
+    //     }
+    //     return res
+    // })
 }

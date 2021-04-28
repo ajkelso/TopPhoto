@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 // import { setToken } from '../services/local-storage'
 import {Form, Row, Col } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
+import { login } from '../redux/actions/userActions'
 
 
 function Login() {
@@ -17,6 +18,7 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        login({user:{username: username.trim(), password}})
     }
 
 
