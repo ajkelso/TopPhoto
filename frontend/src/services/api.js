@@ -15,4 +15,5 @@ export function loginRequest(credentials) {
         headers: loginHeaders,
         body: JSON.stringify(credentials)
     })
+    .then(parseJSON)
 }
