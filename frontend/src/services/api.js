@@ -15,12 +15,4 @@ export function loginRequest(credentials) {
         headers: loginHeaders,
         body: JSON.stringify(credentials)
     })
-    .then(parseJSON)
-    .then(res => console.log(res))
-    //     res => {
-    //     if(res.token){
-    //         setToken(res.token)
-    //     }
-    //     return res
-    // })
 }
