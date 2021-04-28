@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-// import { loginRequest } from '../services/api'
-// import { setToken } from '../services/local-storage'
 import {Form, Row, Col } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { login } from '../redux/actions/userActions'
-import { loginRequest } from '../services/api'
+
 
 
 function Login(props) {
@@ -25,21 +23,7 @@ function Login(props) {
                 password
             }
         }
-        dispatch(login(credentials, props.history))
-        // loginRequest({user:{username: username.trim(), password}})
-        // .then(res => {
-        //     console.log(res.status)
-        //     if (res.status === 401) {
-        //         dispatch({type: 'LOGOUT'})
-        //         dispatch({type: 'ADD_ERROR', error: "Please Log In" })
-        //         props.history.push('/')
-        //     } else {
-        //         return res.json()
-        //     }
-        // })
-        // .then(userData => {
-            
-        // })
+        dispatch(login(credentials))
     }
 
 

@@ -1,6 +1,5 @@
 import { loginRequest } from "../../services/api"
-import { setToken } from "../../services/localStorage";
-const parseJSON = res => res.json()
+import { setToken } from "../../services/localStorage"
 
 
 export function login(credentials, history){
