@@ -3,7 +3,7 @@ import { clearToken, setToken } from "../../services/localStorage"
 import { messageAction, errorAction } from './alertActions'
 
 
-const setUserAction = (user) => {
+export const setUserAction = (user) => {
     return { type: 'SET_USER', payload: user }
 }
 
@@ -31,6 +31,7 @@ export function signUpAction(userData){
             if (res.error) {
                 dispatch(errorAction(res.error))
             } else {
+                console.log(res.user)
                 setToken(res.jwt)
                 dispatch(messageAction(res.message))
                 dispatch(setUserAction(res.user))
@@ -39,15 +40,15 @@ export function signUpAction(userData){
     }
 }
 
-export function verifyToken(){
+export function verifyToken(history){
     return function(dispatch) {
         dispatch( { type: 'START_VERIFY_TOKEN'} )
         verifyRequest()
         .then(res => {
-            console.log(res)
             if (res.error){
                 clearToken()
                 dispatch(errorAction(res.error))
+                history.push("/")
             } else {
                 dispatch(setUserAction(res.user))
             }

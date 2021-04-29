@@ -13,7 +13,6 @@ class AuthController < ApplicationController
   end
 
   def verify
-    byebug
     render json: { user: UserSerializer.new(@user) } , status: :accepted
   end
 
