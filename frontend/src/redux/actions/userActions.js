@@ -38,3 +38,10 @@ export function signUpAction(userData){
         })
     }
 }
+
+export function getUser(){
+    return function(dispatch) {
+        dispatch( { type: 'START_GET_USER'} )
+        userRequest()
+    }
+}
