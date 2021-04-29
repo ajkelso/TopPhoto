@@ -1,5 +1,5 @@
-import { loginRequest, signupRequest } from "../../services/api"
-import { setToken } from "../../services/localStorage"
+import { loginRequest, signupRequest, verifyRequest } from "../../services/api"
+import { clearToken, setToken } from "../../services/localStorage"
 import { messageAction, errorAction } from './alertActions'
 
 
@@ -39,9 +39,18 @@ export function signUpAction(userData){
     }
 }
 
-export function getUser(){
+export function verifyToken(){
     return function(dispatch) {
-        dispatch( { type: 'START_GET_USER'} )
-        userRequest()
+        dispatch( { type: 'START_VERIFY_TOKEN'} )
+        verifyRequest()
+        .then(res => {
+            console.log(res)
+            if (res.error){
+                clearToken()
+                dispatch(errorAction(res.error))
+            } else {
+                dispatch(setUserAction(res.user))
+            }
+        })
     }
 }

@@ -1,12 +1,14 @@
 import { setToken } from "./localStorage"
 
 const URL = 'http://localhost:3000/'
-const usersURL = usersURL
 const parseJSON = res => res.json()
 const loginHeaders = {
     'Accepts': 'application/json',
     'Content-Type': 'application/json'
 }
+const authHeaders = () => ({
+    'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+})
 
 export function loginRequest(credentials) {
     return fetch(URL + 'login', {
@@ -18,7 +20,7 @@ export function loginRequest(credentials) {
 }
 
 export function signupRequest(userData) {
-    return fetch(usersURL, {
+    return fetch(URL + 'users', {
         method: "POST",
         headers: loginHeaders,
         body: JSON.stringify(userData)
@@ -26,7 +28,7 @@ export function signupRequest(userData) {
     .then(parseJSON)
 }
 
-export function userRequest() {
+export function verifyRequest() {
     return fetch(URL + "verify", {
         headers: authHeaders()
     })

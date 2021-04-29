@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getUser } from '../redux/actions/userActions'
 import { Link } from 'react-router-dom'
 
 function Profile() {
@@ -9,14 +8,14 @@ function Profile() {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(getUser())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(getUser())
+    // }, [])
 
     return(
         <div>
             <h2 className="text-center">Welcome, {user.username}!</h2>
-            
+
         </div>
     )
 }
