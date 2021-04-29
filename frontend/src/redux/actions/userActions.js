@@ -1,6 +1,11 @@
 import { loginRequest, signupRequest } from "../../services/api"
 import { setToken } from "../../services/localStorage"
+import { messageAction, errorAction } from './alertActions'
 
+
+const setUserAction = (user) => {
+    return { type: 'SET_USER', payload: user }
+}
 
 export function login(credentials, history){
     return function(dispatch) {
@@ -8,11 +13,11 @@ export function login(credentials, history){
         loginRequest(credentials)
         .then(res => {
             if (res.error) {
-                dispatch({type: 'ADD_ERROR', error: res.error })
+                dispatch(errorAction(res.error))
             } else {
                 setToken(res.jwt)
-                dispatch( {type: 'ADD_MESSAGE', message: res.message })
-                dispatch( {type: 'SET_USER', payload: res.user} )
+                dispatch(messageAction(res.message))
+                dispatch(setUserAction(res.user))
             }
         })
     }
@@ -22,6 +27,14 @@ export function signUpAction(userData){
     return function(dispatch) {
         dispatch({ type: 'START_SIGNUP'})
         signupRequest(userData)
-        .then(res => console.log(res))
+        .then(res => {
+            if (res.error) {
+                dispatch(errorAction(res.error))
+            } else {
+                setToken(res.jwt)
+                dispatch(messageAction(res.message))
+                dispatch(setUserAction(res.user))
+            }
+        })
     }
 }
