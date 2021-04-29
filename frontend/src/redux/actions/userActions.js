@@ -1,10 +1,9 @@
-import { loginRequest } from "../../services/api"
+import { loginRequest, signupRequest } from "../../services/api"
 import { setToken } from "../../services/localStorage"
 
 
 export function login(credentials, history){
     return function(dispatch) {
-        console.log("userAction");
         dispatch({type: 'START_LOGIN'})
         loginRequest(credentials)
         .then(res => {
@@ -16,5 +15,12 @@ export function login(credentials, history){
                 dispatch( {type: 'SET_USER', payload: res.user} )
             }
         })
+    }
+}
+
+export function signUp(userData){
+    return function(dispatch) {
+        dispatch({ type: 'START_SIGNUP'})
+        signupRequest(userData)
     }
 }

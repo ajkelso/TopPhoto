@@ -53,19 +53,19 @@ function SignUp(props){
     const handleSubmit = (e) => {
         e.preventDefault()
         const userData = buildUserData()
-        // if (userData){
-        //     signUpRequest(buildUserData())
-        //     .then(res => {
-        //         if (res.error){
-        //             dispatch( {type: 'ADD_ALERT', error: res.error, message: res.message })
-        //         } else {
-        //             setToken(res.jwt)
-        //             dispatch( {type: 'ADD_ALERT', error: res.error, message: res.message })
-        //             dispatch( {type: 'CHANGE_AUTH', payload: true} )
-        //             props.history.push('/profile')
-        //         }
-        //     })
-        // }
+        if (userData){
+            signUpRequest(buildUserData())
+            .then(res => {
+                if (res.error){
+                    dispatch( {type: 'ADD_ALERT', error: res.error, message: res.message })
+                } else {
+                    setToken(res.jwt)
+                    dispatch( {type: 'ADD_ALERT', error: res.error, message: res.message })
+                    dispatch( {type: 'CHANGE_AUTH', payload: true} )
+                    props.history.push('/profile')
+                }
+            })
+        }
     }
 
     return(

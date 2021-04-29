@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   
   post "/photos", to: 'photos#create'
   
