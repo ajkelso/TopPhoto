@@ -18,9 +18,10 @@ export function login(credentials, history){
     }
 }
 
-export function signUp(userData){
+export function signUpAction(userData){
     return function(dispatch) {
         dispatch({ type: 'START_SIGNUP'})
         signupRequest(userData)
+        .then(res => console.log(res))
     }
 }
