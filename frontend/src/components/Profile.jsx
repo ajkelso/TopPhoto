@@ -16,7 +16,7 @@ function Profile() {
     return(
         <div>
             <h2 className="text-center">Welcome, {user.username}!</h2>
-            { user.galleries ? "Render Galleries" : "Upload Gallery" }
+            { user.galleries ? "Render Galleries" : <Link className="btn btn-info btn-lg d-flex justify-content-center" to="/galleries/new">Upload a Gallery</Link> }
         </div>
     )
 }

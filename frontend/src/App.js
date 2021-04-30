@@ -4,7 +4,7 @@ import Home from './components/Home'
 import Alerts from './components/Alerts'
 import PrivateRoute from './components/PrivateRoute'
 import Profile from './components/Profile'
-
+import Upload from './components/Upload'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container } from 'react-bootstrap'
 import { getToken } from './services/localStorage'
@@ -21,7 +21,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <PrivateRoute path="/profile" component={Profile} />
-
+          <PrivateRoute path="/galleries/new" component={Upload} />
         </Switch>
       </Router>
     </Container>
