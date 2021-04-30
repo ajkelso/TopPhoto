@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router'
 import { createGallery } from '../redux/actions/galleryActions'
 
 export default function Upload(){
@@ -10,6 +11,7 @@ export default function Upload(){
     const [photos, setPhotos] = useState([])
 
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -19,8 +21,7 @@ export default function Upload(){
             const file = files[i]
             galleryData.append('images[]', file)
         }
-        dispatch(createGallery(galleryData))
-        
+        dispatch(createGallery(galleryData, history))
     }
 
     const handleFileChange = (e) => {
