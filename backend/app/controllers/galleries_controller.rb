@@ -6,8 +6,7 @@ class GalleriesController < ApplicationController
         gallery_params[:images].map do |img|
             Photo.create(image: img, gallery_id: @gallery.id) # attaches the uploaded file
         end
-        byebug
-        render json: { gallery: GallerySerializer.new(@gallery) }
+        render json: { gallery: GallerySerializer.new(@gallery), message: "Gallery Successfully Created!" }, status: :created 
         
     end
 

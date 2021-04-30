@@ -1,6 +1,6 @@
 import { loginRequest, signupRequest, userRequest } from "../../services/api"
 import { clearToken, setToken } from "../../services/localStorage"
-import { messageAction, errorAction } from './alertActions'
+import { messageAction, errorAction } from './serviceActions'
 
 
 export const setUserAction = (user) => {

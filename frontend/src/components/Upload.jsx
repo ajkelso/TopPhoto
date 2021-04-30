@@ -16,18 +16,11 @@ export default function Upload(){
         const galleryData = new FormData()   
         galleryData.append('title', title)   
         for (let i = 0; i < files.length; i++) {
-        const file = files[i]
-        galleryData.append('images[]', file)
+            const file = files[i]
+            galleryData.append('images[]', file)
         }
         dispatch(createGallery(galleryData))
-        // ORIGINAL WORKING UPLOAD:
-        // fetch('http://localhost:3000/photos', {
-        // method: 'POST',
-        // headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`},
-        // body: galleryData
-        // })
-        // .then(res => res.json())
-        // .then(res => setPhotos(res))
+        
     }
 
     const handleFileChange = (e) => {
@@ -40,7 +33,7 @@ export default function Upload(){
 
     const renderImages = () => {
         return photos.map(photo => {
-        return <img src={photo.image_url} alt={photo.id} key={photo.id} />
+            return <img src={photo.image_url} alt={photo.id} key={photo.id} />
         })
     }
 
@@ -53,7 +46,6 @@ export default function Upload(){
                 <input type='submit'></input>
                 { photos.length ? renderImages() : null }
             </form>
-        
         </div>
     );
 }

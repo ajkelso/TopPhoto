@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { userReducer } from './userReducer'
-import { authReducer } from './authReducer'
-import { alertsReducer } from './alertsReducer'
+import { servicesReducer } from './servicesReducer'
+import { galleryReducer } from './galleryReducer'
 
 
-export default combineReducers({ user: userReducer, auth: authReducer, alerts: alertsReducer })
+export default combineReducers({ user: userReducer, services: servicesReducer })
