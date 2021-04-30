@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 
-//FROM INITIAL TEST SETUP IN APP:
 export default function Upload(){
     const [files, setFiles] = useState([])
+    const [title, setTitle] = useState("")
+    
+    //for rendering only...
     const [photos, setPhotos] = useState([])
 
     const handleSubmit = (e) => {
@@ -28,6 +30,10 @@ export default function Upload(){
         setFiles(e.target.files)
     }
 
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value)
+    }
+
     const renderImages = () => {
         return photos.map(photo => {
         return <img src={photo.image_url} alt={photo.id} key={photo.id} />
@@ -36,11 +42,13 @@ export default function Upload(){
 
     return (
         <div >
-        <form onSubmit={handleSubmit}>
-            <input type='file' multiple onChange={handleFileChange} ></input>
-            <input type='submit'></input>
-            { photos.length ? renderImages() : null }
-        </form>
+            <h3>Upload a Gallery</h3>
+            <form onSubmit={handleSubmit}>
+                <input type="text" onChange={handleTitleChange} placeholder="Gallery Title" value={title}/>
+                <input type='file' multiple onChange={handleFileChange} ></input>
+                <input type='submit'></input>
+                { photos.length ? renderImages() : null }
+            </form>
         
         </div>
     );
