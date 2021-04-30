@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { createGallery } from '../redux/actions/galleryActions'
 
 export default function Upload(){
     const [files, setFiles] = useState([])
@@ -7,23 +9,25 @@ export default function Upload(){
     //for rendering only...
     const [photos, setPhotos] = useState([])
 
+    const dispatch = useDispatch()
+
     const handleSubmit = (e) => {
         e.preventDefault()
-        const form = new FormData()
-        console.log(files[0]) 
-        // form.append('user_id', 1)   
-        // form.append('title', 'TEST')   
+        const galleryData = new FormData()   
+        galleryData.append('title', title)   
         for (let i = 0; i < files.length; i++) {
         const file = files[i]
-        form.append('images[]', file)
+        galleryData.append('images[]', file)
         }
-        fetch('http://localhost:3000/photos', {
-        method: 'POST',
-        headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`},
-        body: form
-        })
-        .then(res => res.json())
-        .then(res => setPhotos(res))
+        dispatch(createGallery(galleryData))
+        // ORIGINAL WORKING UPLOAD:
+        // fetch('http://localhost:3000/photos', {
+        // method: 'POST',
+        // headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`},
+        // body: galleryData
+        // })
+        // .then(res => res.json())
+        // .then(res => setPhotos(res))
     }
 
     const handleFileChange = (e) => {

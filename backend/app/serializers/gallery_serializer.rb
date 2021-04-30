@@ -1,3 +1,3 @@
 class GallerySerializer < ActiveModel::Serializer
-  attributes :id, :title, :goal
+  attributes :id, :title, :goal, :photos
 end

@@ -34,3 +34,12 @@ export function userRequest() {
     })
     .then(parseJSON)
 }
+
+export function newGalleryRequest(galleryData){
+    return fetch(URL + 'galleries', {
+        method: 'POST',
+        headers: authHeaders(),
+        body: galleryData
+    })
+    .then(parseJSON)
+}

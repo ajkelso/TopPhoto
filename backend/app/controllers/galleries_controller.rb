@@ -1,16 +1,20 @@
 class GalleriesController < ApplicationController
 
     def create
+
+        @gallery = Gallery.create(user_id: @user.id, title: gallery_params[:title])
+        gallery_params[:images].map do |img|
+            Photo.create(image: img, gallery_id: @gallery.id) # attaches the uploaded file
+        end
         byebug
-        @gallery = Gallery.create(gallery_params)
-        params[:photos].each { |p| Cloudinary::Uploader.upload(p) }
+        render json: { gallery: GallerySerializer.new(@gallery) }
         
     end
 
     private
 
     def gallery_params
-        params.permit(:user_id, :title, photos: [])
+        params.permit(:title, images: [])
     end
 
 end
