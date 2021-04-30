@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, useHistory } from 'react-router-dom';
-import { verifyToken } from '../redux/actions/userActions'
+import { getUser } from '../redux/actions/userActions'
 
 function PrivateRoute({ component: Component, ...rest }) {
     
@@ -13,7 +13,7 @@ function PrivateRoute({ component: Component, ...rest }) {
 
     const renderIfVerified = () => {
         if (!user.id) {
-            dispatch(verifyToken(history))
+            dispatch(getUser(history))
         } else {
             return( 
                 <Route {...rest} render={(props) => (

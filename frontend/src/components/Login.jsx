@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Form, Row, Col } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router'
 import { login } from '../redux/actions/userActions'
 
 
@@ -14,6 +15,7 @@ function Login() {
     const handleChangePassword = (e) => setPassword(e.target.value)
 
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -23,7 +25,7 @@ function Login() {
                 password
             }
         }
-        dispatch(login(credentials))
+        dispatch(login(credentials, history))
     }
 
 

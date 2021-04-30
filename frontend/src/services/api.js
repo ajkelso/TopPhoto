@@ -28,8 +28,8 @@ export function signupRequest(userData) {
     .then(parseJSON)
 }
 
-export function verifyRequest() {
-    return fetch(URL + "verify", {
+export function userRequest() {
+    return fetch(URL + "profile", {
         headers: authHeaders()
     })
     .then(parseJSON)

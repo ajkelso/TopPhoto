@@ -12,11 +12,6 @@ class AuthController < ApplicationController
       end
   end
 
-  def verify
-    render json: { user: UserSerializer.new(@user) } , status: :accepted
-  end
-
-
   private
 
   def user_login_params

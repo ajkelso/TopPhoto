@@ -1,4 +1,4 @@
-import { loginRequest, signupRequest, verifyRequest } from "../../services/api"
+import { loginRequest, signupRequest, userRequest } from "../../services/api"
 import { clearToken, setToken } from "../../services/localStorage"
 import { messageAction, errorAction } from './alertActions'
 
@@ -18,12 +18,13 @@ export function login(credentials, history){
                 setToken(res.jwt)
                 dispatch(messageAction(res.message))
                 dispatch(setUserAction(res.user))
+                history.push('/profile')
             }
         })
     }
 }
 
-export function signUpAction(userData){
+export function signUpAction(userData, history){
     return function(dispatch) {
         dispatch({ type: 'START_SIGNUP'})
         signupRequest(userData)
@@ -31,19 +32,19 @@ export function signUpAction(userData){
             if (res.error) {
                 dispatch(errorAction(res.error))
             } else {
-                console.log(res.user)
                 setToken(res.jwt)
                 dispatch(messageAction(res.message))
                 dispatch(setUserAction(res.user))
+                history.push('/profile')
             }
         })
     }
 }
 
-export function verifyToken(history){
+export function getUser(history){
     return function(dispatch) {
         dispatch( { type: 'START_VERIFY_TOKEN'} )
-        verifyRequest()
+        userRequest()
         .then(res => {
             if (res.error){
                 clearToken()

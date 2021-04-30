@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    skip_before_action :authorized
+    skip_before_action :authorized, only: [:create]
 
     def create
         @user = User.create(user_params)
@@ -10,6 +10,10 @@ class UsersController < ApplicationController
         else
             render json: { error: @user.errors.full_messages.to_sentence }, status: :not_acceptable
         end
+    end
+
+    def profile
+        render json: { user: UserSerializer.new(@user) } , status: :accepted
     end
 
     private
