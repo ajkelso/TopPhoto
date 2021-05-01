@@ -6,9 +6,6 @@ import { createGallery } from '../redux/actions/galleryActions'
 export default function Upload(){
     const [files, setFiles] = useState([])
     const [title, setTitle] = useState("")
-    
-    //for rendering only...
-    const [photos, setPhotos] = useState([])
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -32,12 +29,6 @@ export default function Upload(){
         setTitle(e.target.value)
     }
 
-    const renderImages = () => {
-        return photos.map(photo => {
-            return <img src={photo.image_url} alt={photo.id} key={photo.id} />
-        })
-    }
-
     return (
         <div >
             <h3>Upload a Gallery</h3>
@@ -45,7 +36,6 @@ export default function Upload(){
                 <input type="text" onChange={handleTitleChange} placeholder="Gallery Title" value={title}/>
                 <input type='file' multiple onChange={handleFileChange} ></input>
                 <input type='submit'></input>
-                { photos.length ? renderImages() : null }
             </form>
         </div>
     );

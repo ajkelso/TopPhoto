@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute'
 import Profile from './components/Profile'
 import Upload from './components/Upload'
 import Galleries from './components/Galleries'
+import Compare from './components/Compare'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container } from 'react-bootstrap'
 import { getToken } from './services/localStorage'
@@ -24,6 +25,7 @@ function App() {
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/galleries/new" component={Upload} />
           <PrivateRoute path="/my-galleries" component={Galleries} />
+          <PrivateRoute path="/compare" component={Compare} />
         </Switch>
       </Router>
     </Container>

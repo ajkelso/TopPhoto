@@ -1,7 +1,7 @@
 class GallerySerializer < ActiveModel::Serializer
-  attributes :id, :title, :goal, :images
+  attributes :id, :title, :goal, :photos
 
-  def images
+  def photos
     object.photos.map do |photo|
       {
         id: photo.id,
