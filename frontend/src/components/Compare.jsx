@@ -28,14 +28,28 @@ function Compare(props) {
     }
 
     const renderComparison = () => {
-        if (galPos < currGallery.photos.length) {  
-            return (
-                <div>
-                    <img className="photo-contest" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
-                    <img className="photo-contest" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
-                </div>
-            )
+
+        const imageA = () => {
+            if(galPos < currGallery.photos.length){
+                return <img className="photo-contest" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
+            } else {
+                return <p>All Images Have Been Tested</p>
+            }
         }
+
+        const imageB = () => {
+            if(galPos + 1 < currGallery.photos.length){
+                return <img className="photo-contest" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
+            }
+        }
+
+          
+        return (
+            <div>
+                {imageA()}
+                {imageB()}
+            </div>
+        )
     }
     // console.log(currGallery.photos[galleryPosition].url)
     
