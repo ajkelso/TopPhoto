@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :galleries
+  resources :photos
   
   get '/profile', to: 'users#profile'
   

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getGalleryPhotos } from '../redux/actions/galleryActions'
+import { upvoteRequest } from '../services/api'
 
 function Compare(props) {
     //render first 2 side-by-side
@@ -9,23 +10,32 @@ function Compare(props) {
     //finish and start over?
     
     const [currGallery, setCurrGallery] = useState({})
+    const [galPos, setGalPos] = useState(0)
+
     const dispatch = useDispatch()
 
     let galleryPosition = 0
 
-    console.log(galleryPosition)
+    console.log(galPos)
 
     useEffect(() => {
         dispatch(getGalleryPhotos(props.match.params.id, setCurrGallery))
     }, [])
 
+    const handlePhotoClick = (e) => {
+        upvoteRequest(e.target.id)
+        setGalPos(galPos + 2)
+    }
+
     const renderComparison = () => {
-        return (
-            <div>
-                <img className="photo-contest" src={currGallery.photos[galleryPosition].url} alt="photo 1"/>
-                <img className="photo-contest" src={currGallery.photos[galleryPosition + 1].url} alt="photo 2"/>
-            </div>
-        )
+        if (galPos < currGallery.photos.length) {  
+            return (
+                <div>
+                    <img className="photo-contest" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
+                    <img className="photo-contest" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
+                </div>
+            )
+        }
     }
     // console.log(currGallery.photos[galleryPosition].url)
     

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_30_171053) do
+ActiveRecord::Schema.define(version: 2021_05_03_184150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_04_30_171053) do
 
   create_table "photos", force: :cascade do |t|
     t.text "image_data"
-    t.integer "favorites"
+    t.integer "favorites", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "gallery_id"

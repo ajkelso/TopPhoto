@@ -50,3 +50,11 @@ export function galleryPhotosRequest(galleryId){
     })
     .then(parseJSON)
 }
+
+export function upvoteRequest(photoId){
+    return fetch(URL + `photos/${photoId}`, {
+        method: 'PATCH',
+        headers: authHeaders()
+    })
+    .then(parseJSON)
+}
