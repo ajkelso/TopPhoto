@@ -11,7 +11,6 @@ class GalleriesController < ApplicationController
     end
 
     def show
-        byebug
         @gallery = Gallery.find_by(id: params[:id])
         render json: @gallery
     end

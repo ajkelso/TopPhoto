@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getGalleryPhotos } from '../redux/actions/galleryActions'
 
@@ -9,12 +9,13 @@ function Compare(props) {
     //allow user to chose the best one (or both or niether)
     //replace the 2 images with the next 2 in array
     //finish and start over?
+    const [currGallery, setCurrGallery] = useState({})
     const dispatch = useDispatch()
 
     console.log(props.match.params.id)
 
     useEffect(() => {
-        dispatch(getGalleryPhotos(props.match.params.id))
+        dispatch(getGalleryPhotos(props.match.params.id, setCurrGallery))
     }, [])
     
     return(

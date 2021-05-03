@@ -17,10 +17,18 @@ export const createGallery = (galleryData, history) => {
     }
 }
 
-export const getGalleryPhotos = (galleryId) => {
+export const getGalleryPhotos = (galleryId, setCurrGallery) => {
     return function(dispatch) {
         dispatch({ type: 'START_GET_PHOTOS' })
         galleryPhotosRequest(galleryId)
-        .then(res => console.log(res))
+        .then(res => {
+            if (res.error) {
+                dispatch(errorAction(res.error))
+            } else {
+                dispatch({type: 'SUCCESS_GET_PHOTOS'})
+                setCurrGallery(res)
+            }
+        })
+
     }
 }
