@@ -10,10 +10,16 @@ class GalleriesController < ApplicationController
         
     end
 
+    def show
+        byebug
+        @gallery = Gallery.find_by(id: params[:id])
+        render json: @gallery
+    end
+
     private
 
     def gallery_params
-        params.permit(:title, images: [])
+        params.permit(:id, :title, images: [])
     end
 
 end

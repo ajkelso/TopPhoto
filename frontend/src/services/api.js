@@ -43,3 +43,10 @@ export function newGalleryRequest(galleryData){
     })
     .then(parseJSON)
 }
+
+export function galleryPhotosRequest(galleryId){
+    return fetch(URL + `galleries/${galleryId}`, {
+        headers: authHeaders()
+    })
+    .then(parseJSON)
+}

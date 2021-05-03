@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { getGalleryPhotos } from '../redux/actions/galleryActions'
 
 function Compare(props) {
 
@@ -13,8 +14,8 @@ function Compare(props) {
     console.log(props.match.params.id)
 
     useEffect(() => {
-        dispatch(getGalleryPhotos())
-    })
+        dispatch(getGalleryPhotos(props.match.params.id))
+    }, [])
     
     return(
         <div>
