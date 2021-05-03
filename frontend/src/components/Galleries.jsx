@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
+import { Redirect, useHistory } from 'react-router'
 
 function Galleries(){
 
@@ -10,6 +10,7 @@ function Galleries(){
 
     const handleGalleryClick = (e) => {
         console.log(e.target)
+        // return <Redirect to="/compare" />
         history.push('/compare')
     }
 
@@ -17,7 +18,7 @@ function Galleries(){
         return galleries.map(gal => (
             <div>
                 <h5>{gal.title}</h5>
-                <img src={gal.photos[0].url} alt={gal.id} id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
+                <img src={gal.cover} alt={gal.id} id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
             </div>
         ))
     }

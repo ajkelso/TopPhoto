@@ -3,7 +3,11 @@ class UserSerializer < ActiveModel::Serializer
 
   def galleries
     object.galleries.map do |gal|
-      GallerySerializer.new(gal)
+      {
+        id: gal.id, 
+        title: gal.title, 
+        cover: gal.photos[0].image_url
+      }
     end
   end
 end
