@@ -10,7 +10,6 @@ function Galleries(){
 
     const handleGalleryClick = (e) => {
         console.log(e.target)
-        // return <Redirect to="/compare" />
         history.push(`/galleries/${e.target.id}`)
     }
 
