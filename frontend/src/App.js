@@ -23,9 +23,9 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <PrivateRoute path="/profile" component={Profile} />
-          <PrivateRoute path="/galleries/new" component={Upload} />
+          <PrivateRoute exact path="/galleries/new" component={Upload} />
           <PrivateRoute path="/my-galleries" component={Galleries} />
-          <PrivateRoute path="/compare" component={Compare} />
+          <PrivateRoute path='/galleries/:id' component={Compare} />
         </Switch>
       </Router>
     </Container>
