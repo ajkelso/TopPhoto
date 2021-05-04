@@ -27,27 +27,38 @@ function Compare(props) {
         setRoundCount(roundCount + 1)
         setGalPos(0)
     }
+    console.log(galPos)
 
     const renderComparison = () => {
         const imageA = () => {
             if(galPos < currGallery.photos.length){
+                console.log("if")
                 return <img className="photo-contest" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
-            } else {
+            } else if (currGallery.photos.length > 2) {
+                console.log("else if");
                 return (
                     <div>
                         <p>Round Complete!</p>
-                        <button onClick={nextRound}>Click to start Round {roundCount + 1}</button>
-                        
+                        <button onClick={nextRound}>Click to start Round {roundCount + 1}</button> 
+                    </div>
+                )
+            } else {
+                console.log("else");
+                return (
+                    <div>
+                        <p>Competition Complete!</p>
+                        <button onClick={nextRound}>Click to View Results</button>
                     </div>
                 )
             }
         }
 
         const imageB = () => {
+            console.log("imgB");
             if(galPos + 1 < currGallery.photos.length){
                 return <img className="photo-contest" id={currGallery.photos[galPos + 1].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
             } else if (galPos < currGallery.photos.length){
-                return <button onClick={setGalPos(galPos + 1)}>Skip</button>
+                return <button onClick={() => setGalPos(galPos + 1)}>Skip</button>
             }
         }
 
