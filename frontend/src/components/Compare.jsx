@@ -14,7 +14,6 @@ function Compare(props) {
     const dispatch = useDispatch()
     
     useEffect(() => {
-        console.log("effectFire")
         dispatch(getGalleryPhotos(props.match.params.id, setCurrGallery))
     }, [roundCount])
     
@@ -27,15 +26,12 @@ function Compare(props) {
         setRoundCount(roundCount + 1)
         setGalPos(0)
     }
-    console.log(galPos)
 
     const renderComparison = () => {
         const imageA = () => {
             if(galPos < currGallery.photos.length){
-                console.log("if")
                 return <img className="photo-contest" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
             } else if (currGallery.photos.length > 2) {
-                console.log("else if");
                 return (
                     <div>
                         <p>Round Complete!</p>
@@ -43,7 +39,6 @@ function Compare(props) {
                     </div>
                 )
             } else {
-                console.log("else");
                 return (
                     <div>
                         <p>Competition Complete!</p>
@@ -54,7 +49,6 @@ function Compare(props) {
         }
 
         const imageB = () => {
-            console.log("imgB");
             if(galPos + 1 < currGallery.photos.length){
                 return <img className="photo-contest" id={currGallery.photos[galPos + 1].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
             } else if (galPos < currGallery.photos.length){
@@ -87,7 +81,6 @@ function Compare(props) {
     
     return(
         <div>
-            {console.log(currGallery)}
             <h2>Compare</h2>
             <h4>{currGallery.title}</h4>
             <h5>Round: {roundCount}</h5>

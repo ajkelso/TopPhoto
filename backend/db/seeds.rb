@@ -8,6 +8,8 @@
 puts "Seeding..."
 
 User.destroy_all
+Photo.destroy_all
+Gallery.destroy_all
 
 
 u1 = User.create(username: 'Andy', password: 'andy', email: 'a@a.com')
