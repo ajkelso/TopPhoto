@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux'
 
 export default function Navigation() {
 
-    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const user = useSelector(state => state.user)
+    console.log(user)
 
     const loggedInNav = () => {
         return(
@@ -31,7 +32,7 @@ export default function Navigation() {
     
     return(
         <div>
-            { isAuthenticated ? loggedInNav() : loggedOutNav() }
+            { user.id ? loggedInNav() : loggedOutNav() }
         </div>
     )
 }

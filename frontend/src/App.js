@@ -7,10 +7,12 @@ import Profile from './components/Profile'
 import Upload from './components/Upload'
 import Galleries from './components/Galleries'
 import Compare from './components/Compare'
+import Logout from './components/Logout'
 import './App.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container } from 'react-bootstrap'
 import { getToken } from './services/localStorage'
+import Navigation from './components/Navigation'
 
 
 
@@ -20,9 +22,11 @@ function App() {
     <Container>
       <Router>
         { !getToken() ? <Redirect to="/" component={Home} /> : null }
+        <Navigation />
         <Alerts />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path='/logout' component={Logout} />
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute exact path="/galleries/new" component={Upload} />
           <PrivateRoute path="/my-galleries" component={Galleries} />

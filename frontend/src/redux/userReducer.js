@@ -7,6 +7,8 @@ export function userReducer(state = {}, action) {
                 ...state,
                 galleries: [...state.galleries, action.payload],
             }
+        case 'CLEAR_USER' :
+            return {}
         default:
             return state
 
