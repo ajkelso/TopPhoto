@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
-export default function DragAndDrop(props) {
+export default function DragAndDrop({setFiles, files}) {
 
     const dispatch = useDispatch()
     const uploadData = useSelector(state => state.uploadData)
-    console.log(uploadData.files)
-
     const handleDragEnter = e => {
         e.preventDefault();
         e.stopPropagation();
@@ -28,15 +26,15 @@ export default function DragAndDrop(props) {
     const handleDrop = e => {
         e.preventDefault();
         e.stopPropagation();
-        let files = [...e.dataTransfer.files];
-        if(files && files.length > 0){
-            const existingFiles = uploadData.fileList.map(f => f.name)
-            files = files.filter(f => !existingFiles.includes(f.name))
-
-            dispatch({ type: 'ADD_FILE_TO_LIST', files });
-            e.dataTransfer.clearData();
+        let droppedFiles = [...e.dataTransfer.files];
+        if(droppedFiles && droppedFiles.length > 0){
+            
+            // droppedFiles = droppedFiles.filter(f => !existingFiles.includes(f.name))
+            setFiles(files.concat(droppedFiles))
+            // dispatch({ type: 'ADD_FILE_TO_LIST', files });
             dispatch({ type: 'SET_DROP_DEPTH', dropDepth: 0 });
             dispatch({ type: 'SET_IN_DROP_ZONE', inDropZone: false });
+            e.dataTransfer.clearData();
         }
     }
 

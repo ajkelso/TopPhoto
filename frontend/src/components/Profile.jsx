@@ -13,10 +13,15 @@ function Profile() {
         dispatch(getUser())
     }, [])
 
+
+
     return(
         <div>
             <h2 className="text-center">Welcome, {user.username}!</h2>
-            { user.galleries.length ? "Render Galleries" : <Link className="btn btn-info btn-lg d-flex justify-content-center" to="/galleries/new">Upload a Gallery</Link> }
+            <div className="d-flex justify-content-center" >
+                { user.galleries.length ? <Link className="btn btn-info btn-outline-light btn-lg" to="/my-galleries">View Your Galleries</Link> : null }
+                <Link className="btn btn-info btn-outline-light btn-lg" to="/galleries/new">Upload a Gallery</Link>
+            </div>
         </div>
     )
 }

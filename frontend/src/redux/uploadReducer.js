@@ -12,6 +12,7 @@ export function uploadReducer(state = initState, action) {
         case 'SET_IN_DROP_ZONE':
             return { ...state, inDropZone: action.inDropZone };
         case 'ADD_FILE_TO_LIST':
+            //WHY DOESN'T FILE SAVE TO STATE??
             console.log(action.files)
             return { ...state, fileList: state.fileList.concat(action.files) };
         default:

@@ -7,7 +7,7 @@ import DragAndDrop from './DragAndDrop'
 export default function Upload(){
     const [files, setFiles] = useState([])
     const [title, setTitle] = useState("")
-
+    console.log(files);
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -23,7 +23,8 @@ export default function Upload(){
     }
 
     const handleFileChange = (e) => {
-        setFiles(e.target.files)
+        // setFiles(e.target.files)
+        setFiles(Array.from(e.target.files))
     }
 
 
@@ -34,7 +35,7 @@ export default function Upload(){
     return (
         <div >
             <h3>Upload a Gallery</h3>
-            <DragAndDrop/>
+            <DragAndDrop files={files} setFiles={setFiles}/>
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={handleTitleChange} placeholder="Gallery Title" value={title}/>
                 <input type='file' multiple onChange={handleFileChange} ></input>
