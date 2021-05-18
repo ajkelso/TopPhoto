@@ -36,14 +36,20 @@ export default function Upload(){
     return (
         <div >
             <h3>Upload a Gallery</h3>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} style={{border: "solid 1px", padding: "10px"}}>
                 <Form.Group>
-                    <Form.Control size="sm" type="text" onChange={handleTitleChange} placeholder="Gallery Title" value={title}/>
+                    <Form.Label>Title: </Form.Label>
+                    <Form.Control size="sm" type="text" onChange={handleTitleChange} value={title}/>
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label className="btn btn-info btn-outline-light btn-file">
-                      Browse  <input type="file" style={{display: "none"}} multiple onChange={handleFileChange} />
+                    <p>Images:</p>
+                    <Form.Label className="btn btn-outline-info btn-file">
+                      Browse...  <input type="file" style={{display: "none"}} multiple onChange={handleFileChange} />
                     </Form.Label>
+                    <DragAndDrop files={files} setFiles={setFiles}/>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Control type="submit" />
                 </Form.Group>
             </Form>
             {/* <form onSubmit={handleSubmit}>
@@ -51,7 +57,6 @@ export default function Upload(){
                 <input type='file' multiple onChange={handleFileChange} ></input>
                 <input type='submit'></input>
             </form> */}
-            <DragAndDrop files={files} setFiles={setFiles}/>
         </div>
     );
 }
