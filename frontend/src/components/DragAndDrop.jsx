@@ -45,8 +45,7 @@ export default function DragAndDrop({setFiles, files}) {
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
         >
-            <p>Drag Files Here to Upload</p>
-        
+            <p>Drag Files Here or Click to Upload</p>        
         </div>
     )
 }

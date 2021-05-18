@@ -36,17 +36,17 @@ export default function Upload(){
     return (
         <div >
             <h3>Upload a Gallery</h3>
-            <Form onSubmit={handleSubmit} style={{border: "solid 1px", padding: "10px"}}>
+            <Form onSubmit={handleSubmit} >
                 <Form.Group>
                     <Form.Label>Title: </Form.Label>
                     <Form.Control size="sm" type="text" onChange={handleTitleChange} value={title}/>
                 </Form.Group>
                 <Form.Group>
-                    <p>Images:</p>
-                    <Form.Label className="btn btn-outline-info btn-file">
-                      Browse...  <input type="file" style={{display: "none"}} multiple onChange={handleFileChange} />
+                    <Form.Label>Images: </Form.Label>
+                    <Form.Label className="d-flex justify-content-center" >
+                        <input type="file" style={{display: "none"}} multiple onChange={handleFileChange} />
+                        <DragAndDrop files={files} setFiles={setFiles}/>
                     </Form.Label>
-                    <DragAndDrop files={files} setFiles={setFiles}/>
                 </Form.Group>
                 <Form.Group>
                     <Form.Control type="submit" />
