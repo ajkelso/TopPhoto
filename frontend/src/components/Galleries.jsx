@@ -9,7 +9,6 @@ function Galleries(){
     const history = useHistory()
 
     const handleGalleryClick = (e) => {
-        console.log(e.target)
         history.push(`/galleries/${e.target.id}`)
     }
 
@@ -17,7 +16,7 @@ function Galleries(){
         return galleries.map(gal => (
             <div>
                 <h5>{gal.title}</h5>
-                <img src={gal.cover} alt={gal.id} id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
+                <img className="clickable-image" src={gal.cover} alt={gal.id} id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
             </div>
         ))
     }

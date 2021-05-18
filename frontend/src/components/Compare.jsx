@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getGalleryPhotos } from '../redux/actions/galleryActions'
 import { upvoteRequest } from '../services/api'
+import Button from 'react-bootstrap/Button'
 
 function Compare(props) {
     //allow user to chose the best one (or both or niether)
@@ -30,19 +31,19 @@ function Compare(props) {
     const renderComparison = () => {
         const imageA = () => {
             if(galPos < currGallery.photos.length){
-                return <img className="photo-contest" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
+                return <img className="photo-contest clickable-image" id={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
             } else if (currGallery.photos.length > 2) {
                 return (
                     <div>
                         <p>Round Complete!</p>
-                        <button onClick={nextRound}>Click to start Round {roundCount + 1}</button> 
+                        <Button onClick={nextRound}>Click to start Round {roundCount + 1}</Button> 
                     </div>
                 )
             } else {
                 return (
                     <div>
                         <p>Competition Complete!</p>
-                        <button onClick={nextRound}>Click to View Results</button>
+                        <Button onClick={nextRound}>Click to View Results</Button>
                     </div>
                 )
             }
@@ -50,9 +51,9 @@ function Compare(props) {
 
         const imageB = () => {
             if(galPos + 1 < currGallery.photos.length){
-                return <img className="photo-contest" id={currGallery.photos[galPos + 1].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
+                return <img className="photo-contest clickable-image" id={currGallery.photos[galPos + 1].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
             } else if (galPos < currGallery.photos.length){
-                return <button onClick={() => setGalPos(galPos + 1)}>Skip</button>
+                return <Button onClick={() => setGalPos(galPos + 1)}>Skip</Button>
             }
         }
 
