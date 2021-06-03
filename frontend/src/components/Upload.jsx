@@ -33,6 +33,14 @@ export default function Upload(){
         setTitle(e.target.value)
     }
 
+    const renderFileList = () => {
+        return (
+            <ul>
+                {files.map(file => <li>{file.name}</li>)}
+            </ul>
+        )
+    }
+
     return (
         <div >
             <h3>Upload a Gallery</h3>
@@ -48,6 +56,7 @@ export default function Upload(){
                         <DragAndDrop files={files} setFiles={setFiles}/>
                     </Form.Label>
                 </Form.Group>
+                {files.length ? renderFileList() : null }
                 <Form.Group>
                     <Form.Control type="submit" />
                 </Form.Group>

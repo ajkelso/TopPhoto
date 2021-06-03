@@ -36,14 +36,14 @@ function Compare(props) {
                 return (
                     <div>
                         <p>Round Complete!</p>
-                        <Button onClick={nextRound}>Click to start Round {roundCount + 1}</Button> 
+                        <Button variant="outline-secondary" onClick={nextRound}>Click to start Round {roundCount + 1}</Button> 
                     </div>
                 )
             } else {
                 return (
                     <div>
                         <p>Competition Complete!</p>
-                        <Button onClick={nextRound}>Click to View Results</Button>
+                        <Button variant="outline-secondary" onClick={nextRound}>Click to View Results</Button>
                     </div>
                 )
             }
@@ -53,7 +53,7 @@ function Compare(props) {
             if(galPos + 1 < currGallery.photos.length){
                 return <img className="photo-contest clickable-image" id={currGallery.photos[galPos + 1].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
             } else if (galPos < currGallery.photos.length){
-                return <Button onClick={() => setGalPos(galPos + 1)}>Skip</Button>
+                return <Button variant="outline-secondary" onClick={() => setGalPos(galPos + 1)}>Skip</Button>
             }
         }
 
