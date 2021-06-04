@@ -25,7 +25,7 @@ export default function Upload(){
 
     const handleFileChange = (e) => {
         // setFiles(e.target.files)
-        setFiles(Array.from(e.target.files))
+        setFiles(files.concat(Array.from(e.target.files)))
     }
 
 
