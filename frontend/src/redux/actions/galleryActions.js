@@ -9,6 +9,7 @@ export const createGallery = (galleryData, history) => {
             if (res.error) {
                 dispatch(errorAction(res.error))
             } else {
+                console.log(res.gallery);
                 dispatch(messageAction(res.message))
                 dispatch({ type: 'ADD_GALLERY', payload: res.gallery })
                 history.push("/my-galleries")

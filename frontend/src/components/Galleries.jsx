@@ -5,7 +5,6 @@ import { Redirect, useHistory } from 'react-router'
 function Galleries(){
 
     const galleries = useSelector(state => state.user.galleries)
-
     const history = useHistory()
 
     const handleGalleryClick = (e) => {
