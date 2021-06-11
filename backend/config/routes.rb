@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    resources :galleries, only: [:index]
+  end
   resources :galleries
   resources :photos
   

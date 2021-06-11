@@ -1,12 +1,16 @@
 class GalleriesController < ApplicationController
 
+    def index
+        @galleries = Gallery.where(user_id: params[:user_id])
+        render json: @galleries
+    end
+    
     def create
 
         @gallery = Gallery.create(user_id: @user.id, title: gallery_params[:title])
         gallery_params[:images].map do |img|
             Photo.create(image: img, gallery_id: @gallery.id) # attaches the uploaded file
         end
-        byebug
         render json: { gallery: GallerySerializer.new(@gallery), message: "Gallery Successfully Created!" }, status: :created 
         
     end

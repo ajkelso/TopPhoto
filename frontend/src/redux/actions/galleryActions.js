@@ -1,4 +1,4 @@
-import { newGalleryRequest, galleryPhotosRequest } from "../../services/api"
+import { newGalleryRequest, galleryPhotosRequest, galleriesRequest } from "../../services/api"
 import { errorAction, messageAction } from "./serviceActions"
 
 export const createGallery = (galleryData, history) => {
@@ -31,5 +31,13 @@ export const getGalleryPhotos = (galleryId, setCurrGallery) => {
             }
         })
 
+    }
+}
+
+export const getGalleries = (userId) => {
+    return function(dispatch) {
+        dispatch({ type: 'START_GET_GALLERIES'})
+        galleriesRequest(userId)
+        .then(res => console.log(res))
     }
 }

@@ -1,11 +1,18 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useHistory } from 'react-router'
+import { getGalleries } from '../redux/actions/galleryActions'
 
 function Galleries(){
 
     const galleries = useSelector(state => state.user.galleries)
+    const userId = useSelector(state => state.user.id)
     const history = useHistory()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getGalleries(userId))
+    }, [])
 
     const handleGalleryClick = (e) => {
         history.push(`/galleries/${e.target.id}`)
@@ -23,7 +30,7 @@ function Galleries(){
     return(
         <div>
             <h4>Galleries</h4>
-            {renderGalleries()}
+            { galleries.length ? renderGalleries() : null }
         </div>
     )
 }

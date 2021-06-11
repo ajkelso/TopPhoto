@@ -51,6 +51,13 @@ export function galleryPhotosRequest(galleryId){
     .then(parseJSON)
 }
 
+export function galleriesRequest(userId){
+    return fetch(URL + `users/${userId}/galleries`, {
+        headers: authHeaders()
+    })
+    .then(parseJSON)
+}
+
 export function upvoteRequest(photoId){
     return fetch(URL + `photos/${photoId}`, {
         method: 'PATCH',
