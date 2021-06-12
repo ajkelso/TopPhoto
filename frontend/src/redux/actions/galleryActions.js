@@ -38,6 +38,12 @@ export const getGalleries = (userId) => {
     return function(dispatch) {
         dispatch({ type: 'START_GET_GALLERIES'})
         galleriesRequest(userId)
-        .then(res => console.log(res))
+        .then(res => {
+            if (res.error) {
+                dispatch(errorAction(res.error))
+            } else {
+                dispatch({type: 'ADD_GALLERIES', payload: res.galleries})
+            }
+        })
     }
 }

@@ -2,7 +2,6 @@ class GalleriesController < ApplicationController
 
     def index
         @galleries = Gallery.where(user_id: params[:user_id])
-        byebug
         render json: {galleries: serialize_galleries(@galleries)}
     end
     
