@@ -2,7 +2,8 @@ class GalleriesController < ApplicationController
 
     def index
         @galleries = Gallery.where(user_id: params[:user_id])
-        render json: @galleries
+        byebug
+        render json: {galleries: serialize_galleries(@galleries)}
     end
     
     def create
@@ -24,6 +25,18 @@ class GalleriesController < ApplicationController
 
     def gallery_params
         params.permit(:id, :title, images: [])
+    end
+
+    def serialize_galleries(galleries)
+        galleries.map do |gal|
+            if gal.photos.length != 0
+                {
+                id: gal.id, 
+                title: gal.title, 
+                cover: gal.photos[0].image_url
+                }
+            end
+        end
     end
 
 end
