@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux'
 export default function Navigation() {
 
     const user = useSelector(state => state.user)
-    console.log(user)
 
     const loggedInNav = () => {
         return(

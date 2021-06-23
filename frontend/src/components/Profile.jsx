@@ -13,8 +13,6 @@ function Profile() {
         dispatch(getUser())
     }, [])
 
-
-
     return(
         <div>
             <h2 className="text-center">Welcome, {user.username}!</h2>

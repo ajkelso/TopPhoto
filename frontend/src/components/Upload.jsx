@@ -8,7 +8,6 @@ import Form from 'react-bootstrap/Form'
 export default function Upload(){
     const [files, setFiles] = useState([])
     const [title, setTitle] = useState("")
-    console.log(files);
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -58,14 +57,9 @@ export default function Upload(){
                 </Form.Group>
                 {files.length ? renderFileList() : null }
                 <Form.Group>
-                    <Form.Control type="submit" />
+                    <Form.Control type="submit" value="Upload" disabled={!files.length} />
                 </Form.Group>
             </Form>
-            {/* <form onSubmit={handleSubmit}>
-                <input type="text" onChange={handleTitleChange} placeholder="Gallery Title" value={title}/>
-                <input type='file' multiple onChange={handleFileChange} ></input>
-                <input type='submit'></input>
-            </form> */}
         </div>
     );
 }
