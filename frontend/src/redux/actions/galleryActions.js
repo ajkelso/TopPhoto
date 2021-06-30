@@ -1,4 +1,4 @@
-import { newGalleryRequest, galleryPhotosRequest, galleriesRequest } from "../../services/api"
+import { newGalleryRequest, galleryPhotosRequest, galleriesRequest, awsURLRequest, awsUpload } from "../../services/api"
 import { errorAction, messageAction } from "./serviceActions"
 
 export const createGallery = (galleryData, history) => {
@@ -42,6 +42,18 @@ export const getGalleries = (userId) => {
             } else {
                 dispatch({type: 'ADD_GALLERIES', payload: res.galleries})
             }
+        })
+    }
+}
+
+export const directUpload = (imagesData, files) => {
+    return function(dispatch) {
+        dispatch({ type: 'START_DIRECT_UPLOAD'})
+        awsURLRequest(imagesData)
+        .then(res => {
+            console.log(res.get_url);
+            awsUpload(res.post_url, files)
+            .then(res => console.log(res))
         })
     }
 }

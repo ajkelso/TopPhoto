@@ -65,3 +65,25 @@ export function upvoteRequest(photoId){
     })
     .then(parseJSON)
 }
+
+export function awsURLRequest(imagesData){
+    return fetch(URL + 'direct_upload', {
+        method: 'POST',
+        headers: {
+            'Accepts': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+        },
+        body: JSON.stringify(imagesData)
+    })
+    .then(parseJSON)
+}
+
+export function awsUpload(postUrl, files){
+    return fetch(postUrl, {
+        method: 'PUT',
+        headers: { "Content-Type": files[0].type,'acl': 'public-read' },
+        body: files[0]
+    })
+    .then(res => console.log(res))
+}

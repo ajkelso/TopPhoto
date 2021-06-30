@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
-import { createGallery } from '../redux/actions/galleryActions'
+import { createGallery, directUpload } from '../redux/actions/galleryActions'
 import DragAndDrop from './DragAndDrop'
 import Form from 'react-bootstrap/Form'
 
@@ -10,16 +10,25 @@ export default function Upload(){
     const [title, setTitle] = useState("")
     const dispatch = useDispatch()
     const history = useHistory()
-
+    
     const handleSubmit = (e) => {
-        e.preventDefault()
-        const galleryData = new FormData()   
-        galleryData.append('title', title)   
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i]
-            galleryData.append('images[]', file)
-        }
-        dispatch(createGallery(galleryData, history))
+        e.preventDefault();
+        const imagesData = {name: files[0].name, size: files[0].size, type: files[0].type}
+        console.log(imagesData);
+        dispatch(directUpload(imagesData, files))
+
+        
+
+
+        //THIS WORKS FOR NON-DIRECT UPLOAD
+        // e.preventDefault()
+        // const galleryData = new FormData()   
+        // galleryData.append('title', title)   
+        // for (let i = 0; i < files.length; i++) {
+        //     const file = files[i]
+        //     galleryData.append('images[]', file)
+        // }
+        // dispatch(createGallery(galleryData, history))
     }
 
     const handleFileChange = (e) => {

@@ -46,8 +46,6 @@ gem "shrine", "~> 3.0"
 
 gem "aws-sdk-s3", "~> 1.14"
 
-gem 'shrine-url'
-
 gem "jwt", "~> 2.2" 
 
 gem 'dotenv-rails'

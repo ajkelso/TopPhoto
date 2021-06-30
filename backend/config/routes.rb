@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   
   post '/login', to: 'auth#create'
 
+  post '/direct_upload', to: 'aws#set_s3_direct_post'
+
   #for direct upload
   # mount Shrine.presign_endpoint(:cache) => "/presign"
 end
