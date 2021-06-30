@@ -13,9 +13,19 @@ export default function Upload(){
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        const imagesData = {name: files[0].name, size: files[0].size, type: files[0].type}
-        console.log(imagesData);
-        dispatch(directUpload(imagesData, files))
+        const imagesData = files.map(file => (
+            {
+                img_name: file.name, 
+                img_size: file.size, 
+                img_type: file.type,
+                gal_title: title
+            }
+        ))
+        const galleryData = {
+            title,
+            images: imagesData
+        }
+        dispatch(directUpload(galleryData, files))
 
         
 
