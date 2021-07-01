@@ -2,7 +2,7 @@ const initState = {
     dropDepth: 0,
     inDropZone: false,
     fileList: [],
-    fileQue: 0
+    uploading: false
 }
 
 export function uploadReducer(state = initState, action) {
@@ -17,10 +17,9 @@ export function uploadReducer(state = initState, action) {
             console.log(action.files)
             return { ...state, fileList: state.fileList.concat(action.files) };
         case 'START_DIRECT_UPLOAD' :
-            return {...state, fileQue: action.payload, filesUploaded: 0 }
-        case 'SUCCESSFUL_FILE_UPLOAD' :
-            console.log(state.filesUploaded);
-            return { ...state, filesUploaded: ++state.filesUploaded }
+            return {...state, uploading: true }
+        case 'SUCCESSFUL_GALLERY_UPLOAD' :
+            return {...state, uploading: false }
         default:
             return state;
     }
