@@ -51,9 +51,10 @@ export const directUpload = (imagesData, files) => {
         dispatch({ type: 'START_DIRECT_UPLOAD'})
         awsURLRequest(imagesData)
         .then(res => {
-            console.log(res.get_url);
-            awsUpload(res.post_url, files)
-            .then(res => console.log(res))
+            for (let i = 0; i < files.length; i++) {
+                awsUpload(res.post_urls[i], files[i])
+                // .then(res => console.log(res))
+            }
         })
     }
 }

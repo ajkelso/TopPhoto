@@ -7,9 +7,8 @@ class GalleriesController < ApplicationController
     
     def create
         gallery = Gallery.create(user_id: current_user.id, title: params[:title])
-        create_photos
+        create_photos(gallery.id)
         post_urls = gallery.photos.map { |p| p.post_url }
-        byebug
         render json: { post_urls: post_urls } 
     end
 
@@ -47,7 +46,7 @@ class GalleriesController < ApplicationController
         end
     end
 
-    def create_photos
+    def create_photos(gallery_id)
         params[:images].each do |img|
             filename = img[:img_name]
             file_type = img[:img_type]
@@ -56,7 +55,7 @@ class GalleriesController < ApplicationController
             signer = Aws::S3::Presigner.new
             post_url = signer.presigned_url(:put_object, bucket: "topphoto", key: key, acl: 'public-read', content_type: file_type)
             get_url = "https://topphoto.s3-us-east-2.amazonaws.com/#{key}"
-            Photo.create(gallery_id: gallery.id, name: filename, file_type: file_type, image_url: get_url, post_url: post_url)
+            Photo.create(gallery_id: gallery_id, name: filename, file_type: file_type, image_url: get_url, post_url: post_url)
         end
     end
 

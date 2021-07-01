@@ -67,7 +67,7 @@ export function upvoteRequest(photoId){
 }
 
 export function awsURLRequest(imagesData){
-    return fetch(URL + 'direct_upload', {
+    return fetch(URL + 'galleries', {
         method: 'POST',
         headers: {
             'Accepts': 'application/json',
@@ -79,11 +79,11 @@ export function awsURLRequest(imagesData){
     .then(parseJSON)
 }
 
-export function awsUpload(postUrl, files){
+export function awsUpload(postUrl, file){
     return fetch(postUrl, {
         method: 'PUT',
-        headers: { "Content-Type": files[0].type,'acl': 'public-read' },
-        body: files[0]
+        headers: { "Content-Type": file.type,'acl': 'public-read' },
+        body: file
     })
     .then(res => console.log(res))
 }
