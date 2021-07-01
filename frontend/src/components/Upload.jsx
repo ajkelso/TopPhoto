@@ -60,6 +60,7 @@ export default function Upload(){
 
     const sendToGalleries = () => {
         dispatch({ type: 'SUCCESSFUL_GALLERY_UPLOAD'})
+        dispatch({ type: 'ADD_MESSAGE', message: "Gallery successfully created!"})
         return <Redirect to="/my-galleries" />
     }
 
