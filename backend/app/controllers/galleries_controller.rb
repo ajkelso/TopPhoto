@@ -6,15 +6,23 @@ class GalleriesController < ApplicationController
     end
     
     def create
-
-        @gallery = Gallery.create(user_id: @user.id, title: (gallery_params[:title] == "" ? "Gallery #{current_user.galleries.length + 1}" : gallery_params[:title]))
-        
-        gallery_params[:images].map do |img|
-            Photo.create(image: img, gallery_id: @gallery.id) # attaches the uploaded file
-        end
-        render json: { gallery: GallerySerializer.new(@gallery), message: "Gallery Successfully Created!" }, status: :created 
-        
+        gallery = Gallery.create(user_id: current_user.id, title: params[:title])
+        create_photos
+        post_urls = gallery.photos.map { |p| p.post_url }
+        byebug
+        render json: { post_urls: post_urls } 
     end
+
+
+
+    #     @gallery = Gallery.create(user_id: @user.id, title: (gallery_params[:title] == "" ? "Gallery #{current_user.galleries.length + 1}" : gallery_params[:title]))
+        
+    #     gallery_params[:images].map do |img|
+    #         Photo.create(image: img, gallery_id: @gallery.id) # attaches the uploaded file
+    #     end
+    #     render json: { gallery: GallerySerializer.new(@gallery), message: "Gallery Successfully Created!" }, status: :created 
+        
+    # end
 
     def show
         @gallery = Gallery.find_by(id: params[:id])
@@ -36,6 +44,19 @@ class GalleriesController < ApplicationController
                 cover: gal.photos[0].image_url
                 }
             end
+        end
+    end
+
+    def create_photos
+        params[:images].each do |img|
+            filename = img[:img_name]
+            file_type = img[:img_type]
+            file_size = img[:img_size]
+            key = "uploads/#{file_size}/#{filename}"
+            signer = Aws::S3::Presigner.new
+            post_url = signer.presigned_url(:put_object, bucket: "topphoto", key: key, acl: 'public-read', content_type: file_type)
+            get_url = "https://topphoto.s3-us-east-2.amazonaws.com/#{key}"
+            Photo.create(gallery_id: gallery.id, name: filename, file_type: file_type, image_url: get_url, post_url: post_url)
         end
     end
 
