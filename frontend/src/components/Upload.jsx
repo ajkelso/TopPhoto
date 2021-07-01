@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router'
+import { Redirect, useHistory } from 'react-router'
 import { createGallery, directUpload } from '../redux/actions/galleryActions'
 import DragAndDrop from './DragAndDrop'
 import Form from 'react-bootstrap/Form'
@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form'
 export default function Upload(){
     const [files, setFiles] = useState([])
     const [title, setTitle] = useState("")
+    const [filesUploaded, setFilesUploaded] = useState(null)
     const dispatch = useDispatch()
     const history = useHistory()
     
@@ -25,9 +26,7 @@ export default function Upload(){
             title,
             images: imagesData
         }
-        dispatch(directUpload(galleryData, files))
-
-        
+        dispatch(directUpload(galleryData, files, filesUploaded, setFilesUploaded))
 
 
         //THIS WORKS FOR NON-DIRECT UPLOAD
@@ -59,8 +58,14 @@ export default function Upload(){
         )
     }
 
+    const sendToGalleries = () => {
+        dispatch({ type: 'SUCCESSFUL_GALLERY_UPLOAD'})
+        return <Redirect to="/my-galleries" />
+    }
+
     return (
         <div >
+            { files.length == filesUploaded ? sendToGalleries() : null }
             <h3>Upload a Gallery</h3>
             <Form onSubmit={handleSubmit} >
                 <Form.Group>

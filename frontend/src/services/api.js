@@ -85,5 +85,4 @@ export function awsUpload(postUrl, file){
         headers: { "Content-Type": file.type,'acl': 'public-read' },
         body: file
     })
-    .then(res => console.log(res))
 }

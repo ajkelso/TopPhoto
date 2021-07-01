@@ -46,14 +46,18 @@ export const getGalleries = (userId) => {
     }
 }
 
-export const directUpload = (imagesData, files) => {
+export const directUpload = (imagesData, files, filesUploaded, setFilesUploaded) => {
     return function(dispatch) {
-        dispatch({ type: 'START_DIRECT_UPLOAD'})
+        dispatch({ type: 'START_DIRECT_UPLOAD', payload: files.length })
         awsURLRequest(imagesData)
         .then(res => {
             for (let i = 0; i < files.length; i++) {
                 awsUpload(res.post_urls[i], files[i])
-                // .then(res => console.log(res))
+                .then(res => {
+                    if (res.ok) {
+                        setFilesUploaded(++filesUploaded)
+                    }
+                })
             }
         })
     }
