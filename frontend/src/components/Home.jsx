@@ -4,6 +4,8 @@ import Login from './Login'
 import SignUp from './SignUp'
 
 import Button from 'react-bootstrap/Button'
+import { getToken } from '../services/localStorage'
+import { Redirect } from 'react-router'
 
 function Home(props) {
 
@@ -22,6 +24,14 @@ function Home(props) {
         if (login) {
             setLogin(false)
         }
+    }
+
+    if (getToken()){
+        return(
+            <>
+                <Redirect to="/profile"/>
+            </>
+        )
     }
 
     return (

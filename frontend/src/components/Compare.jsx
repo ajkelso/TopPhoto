@@ -25,8 +25,8 @@ function Compare(props) {
 
     const nextRound = () => {
         setCurrGallery({})
-        setRoundCount(roundCount + 1)
         setGalPos(0)
+        setRoundCount(roundCount + 1)
     }
 
     const renderComparison = () => {
