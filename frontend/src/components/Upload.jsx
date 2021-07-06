@@ -64,6 +64,7 @@ export default function Upload(){
         return <Redirect to="/my-galleries" />
     }
 
+
     return (
         <div >
             { files.length == filesUploaded ? sendToGalleries() : null }
