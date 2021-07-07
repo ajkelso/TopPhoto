@@ -1,3 +1,5 @@
+
+
 .gallery-info {
   display: flex;
   flex-direction: row;
@@ -14,12 +16,19 @@
 
 }
 
+#battle-zone {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 
 .photo-contest {
-  width: 40vw;
-  height: auto;
+  // width: 40vw;
+  // height: auto;
   border: solid white 1vw;
-  text-align: center;
+  // text-align: center;
+  width: 49%;
+  object-fit: contain;
 }
 
 .favorite-photo {
