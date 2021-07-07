@@ -31,6 +31,6 @@
 }
 
 .clickable-image:hover {
-  background-color: blue;
-  opacity: 0.5;
+  border: rgb(157, 157, 158) 1px solid;
+  transform: scale(1.3);
 }

@@ -63,7 +63,7 @@ function SignUp(props){
 
     return(
         <div>
-            <h5 className="d-flex justify-content-center">Sign up to narrow it down</h5>
+            <h4 className="d-flex justify-content-center">Sign up to narrow it down</h4>
             <Form onSubmit={handleSubmit}>
                 <Form.Group as={Row} className="justify-content-md-center" >
                     <Col sm={8} xs lg="3">
