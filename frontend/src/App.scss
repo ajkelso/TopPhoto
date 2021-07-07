@@ -18,6 +18,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+
+}
+
+#battle-zone > * {
+  pointer-events: auto;
+  transition: 300ms opacity, 300ms transform;
+
 }
 
 #battle-zone:hover > * {
