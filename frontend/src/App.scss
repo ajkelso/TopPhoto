@@ -1,7 +1,25 @@
+.gallery-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75%;
+  margin: auto;
+}
+
+.gallery-title {
+  
+}
+
+.round-count {
+
+}
+
+
 .photo-contest {
   width: 40vw;
   height: auto;
-  border: solid white 1vw
+  border: solid white 1vw;
+  text-align: center;
 }
 
 .favorite-photo {
@@ -29,6 +47,7 @@
   text-align: left;
   font-weight: bold;
 }
+
 
 .clickable-image:hover {
   border: rgb(157, 157, 158) 1px solid;

@@ -42,7 +42,7 @@ function Compare(props) {
                 )
             } else {
                 return (
-                    <div>
+                    <div >
                         <p>Competition Complete!</p>
                         <Button variant="outline-secondary" onClick={nextRound}>Click to View Results</Button>
                     </div>
@@ -59,7 +59,7 @@ function Compare(props) {
         }
 
         return (
-            <div>
+            <div id="battle-zone">
                 {imageA()}
                 {imageB()}
             </div>
@@ -70,7 +70,7 @@ function Compare(props) {
         if(currGallery.photos){
             if (currGallery.photos.length === 1){
                 return(
-                    <div>
+                    <div id="fav-photo">
                         <h3>Your favorite photo is:</h3>
                         <img className="favorite-photo" id={currGallery.photos[0].id} onClick={handlePhotoClick} src={currGallery.photos[0].url} alt="Favorite Photo"/>
                     </div>
@@ -84,9 +84,15 @@ function Compare(props) {
     return(
         <div>
             <h2>Compare</h2>
-            <h4>{currGallery.title}</h4>
-            <h5>Round: {roundCount}</h5>
-            { currGallery.goal ? <p>GOAL: {currGallery.goal}</p> : null }
+            <div className="gallery-info">
+                <div className="gallery-title">
+                    <h4><strong>Gallery Title:</strong> {currGallery.title}</h4>
+                </div>
+                <div classname="round-count">
+                    <p><strong>Round:</strong> {roundCount}</p>
+                </div>
+                { currGallery.goal ? <p>GOAL: {currGallery.goal}</p> : null }
+            </div>
             { renderPhotos() }
         </div>
     )
