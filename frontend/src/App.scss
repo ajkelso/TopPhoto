@@ -3,6 +3,10 @@
   font-family: 'Roboto Mono', monospace;
 }
 
+.logo {
+  height: 3em;
+}
+
 .user-galleries {
   display: flex;
   flex-wrap: wrap;
@@ -10,7 +14,6 @@
 }
 
 .gallery {
-  border: solid black 2px;
   margin: .5em;
 }
 
