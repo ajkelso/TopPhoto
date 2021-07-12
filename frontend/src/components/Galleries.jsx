@@ -20,9 +20,9 @@ function Galleries(){
 
     const renderGalleries = () => {
         return galleries.map(gal => (
-            <div>
+            <div className="gallery" key={gal.id}>
                 <h5>{gal.title}</h5>
-                <img className="clickable-image" src={gal.cover} alt={gal.id} id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
+                <img className="clickable-image" src={gal.cover} alt={gal.title} id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
             </div>
         ))
     }
@@ -30,7 +30,7 @@ function Galleries(){
     return(
         <div>
             <h4>Galleries</h4>
-            { galleries.length ? renderGalleries() : null }
+            { galleries.length ? <div className="user-galleries">{renderGalleries()}</div> : null }
         </div>
     )
 }

@@ -3,6 +3,17 @@
   font-family: 'Roboto Mono', monospace;
 }
 
+.user-galleries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.gallery {
+  border: solid black 2px;
+  margin: .5em;
+}
+
 .gallery-info {
   display: flex;
   flex-direction: row;
