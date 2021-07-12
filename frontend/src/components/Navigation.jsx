@@ -17,14 +17,6 @@ export default function Navigation() {
             </Nav>  
         )
     }
-
-    // const loggedOutNav = () => {
-    //     return (
-    //     <Navbar bg="light" variant="light" expand="sm" > 
-    //         <Navbar.Brand as={NavLink} to="/">TopPhoto</Navbar.Brand>
-    //     </Navbar>
-    //     )
-    // }
     
     
     return(

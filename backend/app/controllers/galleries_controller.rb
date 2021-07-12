@@ -6,7 +6,7 @@ class GalleriesController < ApplicationController
     end
     
     def create
-        gallery = Gallery.create(user_id: current_user.id, title: params[:title])
+        gallery = Gallery.create(user_id: current_user.id, title: (gallery_params[:title] == "" ? "Gallery #{current_user.galleries.length + 1}" : gallery_params[:title]))
         create_photos(gallery.id)
         post_urls = gallery.photos.map { |p| p.post_url }
         render json: { post_urls: post_urls } 
