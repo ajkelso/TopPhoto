@@ -17,6 +17,10 @@
   margin: .5em;
 }
 
+.gallery:hover {
+  transform: scale(1.1);
+}
+
 .gallery-info {
   display: flex;
   flex-direction: row;
