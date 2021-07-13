@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useHistory } from 'react-router'
 import { getGalleries } from '../redux/actions/galleryActions'
+import { deleteGallery } from '../services/api'
 
 function Galleries(){
 
@@ -18,11 +19,18 @@ function Galleries(){
         history.push(`/galleries/${e.target.id}`)
     }
 
+    const handleDelete = (e) => {
+        console.log("fired");
+        deleteGallery(e.target.id)
+        .then(res => console.log(res))
+    }
+
     const renderGalleries = () => {
         return galleries.map(gal => (
             <div className="gallery" key={gal.id}>
                 <h5>{gal.title}</h5>
                 <img className="clickable-image" src={gal.cover} alt={gal.title} id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
+                <button id={gal.id} onClick={handleDelete}>Delete</button>
             </div>
         ))
     }

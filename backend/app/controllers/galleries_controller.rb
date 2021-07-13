@@ -28,6 +28,15 @@ class GalleriesController < ApplicationController
         render json: @gallery
     end
 
+    def destroy
+        @gallery = Gallery.find_by(id: params[:id])
+        if @gallery.delete 
+            render json: { message: "Gallery deleted!" }
+        else
+            render json: { error: "Gallery not deleted"}
+        end
+    end
+
     private
 
     def gallery_params
