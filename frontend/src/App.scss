@@ -1,7 +1,6 @@
 
 * {
   font-family: 'Roboto Mono', monospace;
-  background-color: rgb(197, 197, 197);
 }
 
 .logo {
@@ -56,11 +55,14 @@
 #battle-zone:hover > * {
   transform: scale(0.8);
   opacity: 0.6;
+  border: 3px solid rgb(255, 12, 12);
+
 }
 
 #battle-zone:hover > *:hover {
   transform: scale(1.2);
   opacity: 1;
+  border: 3px solid rgb(158, 255, 12);
 }
 
 .photo-contest {
