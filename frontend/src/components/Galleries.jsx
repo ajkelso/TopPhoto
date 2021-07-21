@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useHistory } from 'react-router'
-import { getGalleries } from '../redux/actions/galleryActions'
-import { deleteGallery } from '../services/api'
+import { deleteGallery, getGalleries } from '../redux/actions/galleryActions'
 
 function Galleries(){
 
@@ -21,11 +20,7 @@ function Galleries(){
 
     const handleDelete = (e) => {
         console.log("fired");
-        deleteGallery(e.target.id)
-        .then(res => {
-            dispatch(getGalleries(userId))
-            console.log(res)
-        })
+        deleteGallery(e.target.id, dispatch)
     }
 
     const renderGalleries = () => {

@@ -1,4 +1,4 @@
-import { newGalleryRequest, galleryPhotosRequest, galleriesRequest, awsURLRequest, awsUpload } from "../../services/api"
+import { newGalleryRequest, galleryPhotosRequest, galleriesRequest, awsURLRequest, awsUpload, deleteGalleryRequest } from "../../services/api"
 import { errorAction, messageAction } from "./serviceActions"
 
 export const createGallery = (galleryData, history) => {
@@ -61,4 +61,17 @@ export const directUpload = (imagesData, files, filesUploaded, setFilesUploaded)
             }
         })
     }
+}
+
+export const deleteGallery = (galId,dispatch) => {
+    console.log(galId)
+    deleteGalleryRequest(galId)
+    .then(res => {
+        if (res.error) {
+            dispatch(errorAction(res.error))
+        } else {
+            dispatch(messageAction(res.message))
+            dispatch({ type: 'REMOVE_GALLERY', payload: res.galleryId})
+        }
+    })
 }

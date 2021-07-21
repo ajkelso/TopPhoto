@@ -87,7 +87,8 @@ export function awsUpload(postUrl, file){
     })
 }
 
-export function deleteGallery(galID) {
+export function deleteGalleryRequest(galID) {
+    console.log(galID)
     return fetch(URL + `galleries/${galID}`, {
         method: 'DELETE',
         headers: authHeaders()
