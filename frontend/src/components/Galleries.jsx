@@ -22,7 +22,10 @@ function Galleries(){
     const handleDelete = (e) => {
         console.log("fired");
         deleteGallery(e.target.id)
-        .then(res => console.log(res))
+        .then(res => {
+            dispatch(getGalleries(userId))
+            console.log(res)
+        })
     }
 
     const renderGalleries = () => {
