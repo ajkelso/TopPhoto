@@ -31,7 +31,7 @@ class GalleriesController < ApplicationController
     def destroy
         @gallery = Gallery.find_by(id: params[:id])
         if @gallery.delete 
-            render json: { message: "Gallery deleted!" }
+            render json: { message: "Gallery deleted!", galleryId: @gallery.id }
         else
             render json: { error: "Gallery not deleted"}
         end

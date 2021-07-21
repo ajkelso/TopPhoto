@@ -63,15 +63,14 @@ export const directUpload = (imagesData, files, filesUploaded, setFilesUploaded)
     }
 }
 
-export const deleteGallery = (galId,dispatch) => {
-    console.log(galId)
+export const deleteGallery = (galId, dispatch) => {
     deleteGalleryRequest(galId)
     .then(res => {
         if (res.error) {
             dispatch(errorAction(res.error))
         } else {
             dispatch(messageAction(res.message))
-            dispatch({ type: 'REMOVE_GALLERY', payload: res.galleryId})
+            dispatch({ type: 'DELETE_GALLERY', payload: res.galleryId})
         }
     })
 }
