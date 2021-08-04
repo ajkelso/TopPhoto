@@ -9,6 +9,7 @@ export default function Upload(){
     const [files, setFiles] = useState([])
     const [title, setTitle] = useState("")
     const [filesUploaded, setFilesUploaded] = useState(null)
+    const [galleryId, setGalleryId] = useState(null)
     const dispatch = useDispatch()
     const history = useHistory()
     
@@ -26,7 +27,7 @@ export default function Upload(){
             title,
             images: imagesData
         }
-        dispatch(directUpload(galleryData, files, filesUploaded, setFilesUploaded))
+        dispatch(directUpload(galleryData, files, filesUploaded, setFilesUploaded, setGalleryId))
 
 
         //THIS WORKS FOR NON-DIRECT UPLOAD
@@ -58,16 +59,16 @@ export default function Upload(){
         )
     }
 
-    const sendToGalleries = () => {
+    const sendToCompare = () => {
         dispatch({ type: 'SUCCESSFUL_GALLERY_UPLOAD'})
         dispatch({ type: 'ADD_MESSAGE', message: "Gallery successfully created!"})
-        return <Redirect to="/my-galleries" />
+        return <Redirect to={`/galleries/${galleryId}`} />
     }
 
 
     return (
         <div >
-            { files.length == filesUploaded ? sendToGalleries() : null }
+            { files.length == filesUploaded ? sendToCompare() : null }
             <h3>Upload a Gallery</h3>
             <Form onSubmit={handleSubmit} >
                 <Form.Group>
