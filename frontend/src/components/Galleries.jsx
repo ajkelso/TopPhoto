@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useHistory } from 'react-router'
 import { deleteGallery, getGalleries } from '../redux/actions/galleryActions'
+import Button from 'react-bootstrap/Button'
 
 function Galleries(){
 
@@ -28,7 +29,8 @@ function Galleries(){
             <div className="gallery" key={gal.id}>
                 <h5>{gal.title}</h5>
                 <img className="clickable-image" src={gal.cover} alt={gal.title} id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
-                <button id={gal.id} onClick={handleDelete}>Delete</button>
+                <br/>
+                <Button variant="outline-secondary" id={gal.id} onClick={handleDelete}>Delete</Button>
             </div>
         ))
     }
