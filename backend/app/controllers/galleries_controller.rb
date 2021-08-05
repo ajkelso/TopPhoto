@@ -24,8 +24,13 @@ class GalleriesController < ApplicationController
     # end
 
     def show
+        byebug
         @gallery = Gallery.find_by(id: params[:id])
-        render json: @gallery
+        if @gallery && @gallery.user_id == current_user.id
+            render json: @gallery
+        else
+            render json: {error: "Choose another gallery to compare"}
+        end
     end
 
     def destroy
