@@ -20,7 +20,6 @@ export default function Navigation() {
         )
     }
     
-    
     return(
         <div>
             <Navbar bg="light" variant="light" expand="sm" > 
