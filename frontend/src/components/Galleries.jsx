@@ -28,7 +28,9 @@ function Galleries(){
         return galleries.map(gal => (
             <div className="gallery" key={gal.id}>
                 <h5>{gal.title}</h5>
-                <img className="clickable-image" src={gal.cover} alt={gal.title} id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
+                <div className="clickable-image"> 
+                    <img src={gal.cover} alt={gal.title} id={gal.id} onClick={handleGalleryClick} width="300px" height="auto"/>
+                </div>
                 <br/>
                 <Button variant="outline-secondary" id={gal.id} onClick={handleDelete}>Delete</Button>
             </div>

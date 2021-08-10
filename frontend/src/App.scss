@@ -14,11 +14,14 @@
   justify-content: space-around;
 }
 
-.gallery {
-  margin: .5em;
+.clickable-image {
+  margin: .1em;
+  width: 17vw;
+  height: 17vw;
+  overflow: hidden;
 }
 
-.gallery:hover {
+.clickable-image:hover {
   transform: scale(1.1);
 }
 
