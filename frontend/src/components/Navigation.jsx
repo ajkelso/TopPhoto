@@ -13,6 +13,8 @@ export default function Navigation() {
         return(
             <Nav className="mr-auto">   
                 <Nav.Link as={NavLink} to="/profile">Profile</Nav.Link>
+                {user.galleries ? <Nav.Link as={NavLink} to='/my-galleries'>Galleries</Nav.Link>: null}
+                <Nav.Link as={NavLink} to="/galleries/new">Upload</Nav.Link>
                 <Nav.Link as={NavLink} to='/logout'>Logout</Nav.Link>
             </Nav>  
         )

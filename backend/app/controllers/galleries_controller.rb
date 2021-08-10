@@ -24,7 +24,6 @@ class GalleriesController < ApplicationController
     # end
 
     def show
-        byebug
         @gallery = Gallery.find_by(id: params[:id])
         if @gallery && @gallery.user_id == current_user.id
             render json: @gallery
