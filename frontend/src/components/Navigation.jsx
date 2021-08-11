@@ -11,19 +11,19 @@ export default function Navigation() {
 
     const loggedInNav = () => {
         return(
-            <Nav className="mr-auto">   
-                <Nav.Link as={NavLink} to="/profile">Profile</Nav.Link>
-                {user.galleries ? <Nav.Link as={NavLink} to='/my-galleries'>Galleries</Nav.Link>: null}
-                <Nav.Link as={NavLink} to="/galleries/new">Upload</Nav.Link>
-                <Nav.Link as={NavLink} to='/logout'>Logout</Nav.Link>
+            <Nav className="d-flex align-items-center">   
+                <Nav.Link as={NavLink} to="/profile"><p className="d-flex align-items-center">Profile</p></Nav.Link>
+                {user.galleries ? <Nav.Link as={NavLink} to='/my-galleries'><p className="navi-link">Galleries</p></Nav.Link>: null}
+                <Nav.Link as={NavLink} to="/galleries/new"><p className="navi-link">Upload</p></Nav.Link>
+                <Nav.Link as={NavLink} to='/logout'><p className="navi-link">Logout</p></Nav.Link>
             </Nav>  
         )
     }
     
     return(
         <div>
-            <Navbar bg="light" variant="light" expand="sm" > 
-                <Navbar.Brand as={NavLink} to="/"><img className="logo" src="../TopPhotoLogo.png" atl="topPhoto-logo"/>  </Navbar.Brand>
+            <Navbar bg="dark" variant="dark" expand="sm" className="d-flex align-items-center" > 
+                <Navbar.Brand as={NavLink} to="/"><img className="logo" src="../TopPhotoHorz.png" atl="topPhoto-logo"/>  </Navbar.Brand>
                 { user.id ? loggedInNav() : null }
             </Navbar>
         </div>

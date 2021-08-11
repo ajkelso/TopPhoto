@@ -3,9 +3,17 @@
   font-family: 'Roboto Mono', monospace;
 }
 
+#body {
+  background-color: rgb(44, 44, 44);
+}
+
 .logo {
-  height: 3em;
-  background-color: white;
+  height: 2em;
+}
+
+.nav-link {
+  height: 1vw;
+  line-height: .5vw;
 }
 
 .user-galleries {
