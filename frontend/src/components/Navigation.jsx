@@ -23,7 +23,7 @@ export default function Navigation() {
     return(
         <div>
             <Navbar bg="dark" variant="dark" expand="sm" className="d-flex align-items-center" > 
-                <Navbar.Brand as={NavLink} to="/"><img className="logo" src="../TopPhotoHorz.png" atl="topPhoto-logo"/>  </Navbar.Brand>
+                <Navbar.Brand as={NavLink} id="brand-name" to="/"><img className="logo" src="../TopPhotoLogo2.png" atl="topPhoto-logo"/>TopPhoto</Navbar.Brand>
                 { user.id ? loggedInNav() : null }
             </Navbar>
         </div>
