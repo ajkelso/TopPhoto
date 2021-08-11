@@ -35,13 +35,20 @@
 
 .clickable-image {
   margin: .1em;
-  width: 17vw;
-  height: 17vw;
+  width: 20vw;
+  height: 20vw;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .clickable-image:hover {
   transform: scale(1.1);
+}
+
+.gallery-cover {
+  height: 100%;
+  width: auto;
 }
 
 .gallery-info {

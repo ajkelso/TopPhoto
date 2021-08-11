@@ -29,7 +29,7 @@ function Galleries(){
             <div className="gallery" key={gal.id}>
                 <h5>{gal.title}</h5>
                 <div className="clickable-image"> 
-                    <img src={gal.cover} alt={gal.title} id={gal.id} onClick={handleGalleryClick} width="300px" height="auto"/>
+                    <img src={gal.cover} alt={gal.title} className="gallery-cover" id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
                 </div>
                 <br/>
                 <Button variant="outline-secondary" id={gal.id} onClick={handleDelete}>Delete</Button>
