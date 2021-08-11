@@ -132,14 +132,30 @@
   
 }
 
+#upload {
+  margin: auto;
+  width: 75%;
+  text-align: center;
+}
+
+.upload-form {
+  border: solid 1px white;
+  padding: 5px;
+}
+
 .drag-drop-zone {
   padding: 2rem;
   text-align: center;
   background: rgb(93, 161, 182);
   border-radius: 0.5rem;
-  box-shadow: 5px 5px 10px #C0C0C0;
+  box-shadow: 2px 2px 5px #C0C0C0;
   width: 100%;
 }
+
+.drag-drop-zone:hover{
+  cursor: pointer;
+}
+
 .drag-drop-zone p {
   color: #FFF;
 }

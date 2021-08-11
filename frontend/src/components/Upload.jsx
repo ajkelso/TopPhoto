@@ -67,10 +67,10 @@ export default function Upload(){
 
 
     return (
-        <div >
+        <div id="upload">
             { files.length == filesUploaded ? sendToCompare() : null }
             <h3>Upload a Gallery</h3>
-            <Form onSubmit={handleSubmit} >
+            <Form onSubmit={handleSubmit} className="upload-form">
                 <Form.Group>
                     <Form.Label>Title: </Form.Label>
                     <Form.Control size="sm" type="text" onChange={handleTitleChange} value={title}/>
