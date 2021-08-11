@@ -23,6 +23,25 @@
   line-height: .2vw;
 }
 
+.alerts {
+  height: 40px;
+  // text-align: center;
+}
+
+.alert-banner {
+  text-align: center;
+  margin: auto;
+  width: 50%;
+}
+
+.success {
+  background-color: rgb(59, 230, 59);
+}
+
+.error {
+  background-color: red;
+}
+
 .btn {
   margin: 1vw;
 }

@@ -17,13 +17,13 @@ export default function Alerts() {
     },)
     
     return(
-        <>
-            { message && (<Alert className="sticky-top" variant="success" >
+        <div className="alerts">
+            { message && (<p className="alert-banner success">
                 {message}
-            </Alert>) }
-            { error && (<Alert variant="danger">
+            </p>) }
+            { error && (<p className="alert-banner error">
                 {error}
-            </Alert>) }
-        </>
+            </p>) }
+        </div>
     )
 }
