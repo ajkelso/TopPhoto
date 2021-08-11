@@ -31,7 +31,6 @@ function Galleries(){
                 <div className="clickable-image"> 
                     <img src={gal.cover} alt={gal.title} className="gallery-cover" id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
                 </div>
-                <br/>
                 <Button variant="outline-secondary" id={gal.id} onClick={handleDelete}>Delete</Button>
             </div>
         ))
