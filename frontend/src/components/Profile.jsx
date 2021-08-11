@@ -17,8 +17,8 @@ function Profile() {
         <div>
             <h2 className="text-center">Welcome, {user.username}!</h2>
             <div className="d-flex justify-content-center" >
-                { user.galleries ? <Link className="btn btn-info btn-outline-light btn-lg" to="/my-galleries">View Your Galleries</Link> : null }
                 <Link className="btn btn-info btn-outline-light btn-lg" to="/galleries/new">Upload a Gallery</Link>
+                { user.galleries ? <Link className="btn btn-info btn-outline-light btn-lg" to="/my-galleries">View Your Galleries</Link> : null }
             </div>
         </div>
     )

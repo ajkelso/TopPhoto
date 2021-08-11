@@ -5,6 +5,7 @@
 
 #body {
   background-color: rgb(44, 44, 44);
+  color: white
 }
 
 .logo {
@@ -19,6 +20,10 @@
 .nav-link {
   height: 1vw;
   line-height: .2vw;
+}
+
+.btn {
+  margin: 1vw;
 }
 
 .user-galleries {
@@ -117,13 +122,3 @@
   font-weight: bold;
 }
 
-
-
-// .clickable-image:hover > * {
-//   transform: scale(.9);
-// }
-
-// .clickable-image:hover {
-//   border: rgb(157, 157, 158) 1px solid;
-//   transform: scale(1.3);
-// }
