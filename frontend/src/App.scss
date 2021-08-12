@@ -134,11 +134,18 @@
   text-align: center;
 }
 
+.complete {
+  text-align: center;
+}
+
+.complete > p {
+  margin-bottom: 3px;
+}
+
 .favorite-photo {
   width: 100%;
   height: auto;
   margin-bottom: 1em;
-  
 }
 
 #upload {

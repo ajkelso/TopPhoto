@@ -37,14 +37,14 @@ function Compare(props) {
                 return (
                     <div className="complete">
                         <p>Round Complete!</p>
-                        <Button variant="outline-secondary" onClick={nextRound}>Click to start Round {roundCount + 1}</Button> 
+                        <Button variant="outline-secondary" onClick={nextRound}>Start Round {roundCount + 1}</Button> 
                     </div>
                 )
             } else {
                 return (
                     <div className="complete">
                         <p>Competition Complete!</p>
-                        <Button variant="outline-secondary" onClick={nextRound}>Click to View Results</Button>
+                        <Button variant="outline-secondary" onClick={nextRound}>View Results</Button>
                     </div>
                 )
             }
