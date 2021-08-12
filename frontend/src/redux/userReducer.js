@@ -9,7 +9,6 @@ export function userReducer(state = {}, action) {
                 galleries: action.payload
             }
         case 'DELETE_GALLERY' :
-            console.log(state);
             return {
                 ...state,
                 galleries: state.galleries.filter(gal => gal.id != action.payload)
