@@ -74,12 +74,21 @@
   width: auto;
 }
 
+#compare h2 {
+  text-align: center;
+}
+
 .gallery-info {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 75%;
+  justify-content:space-evenly;
+  width: 100%;
   margin: auto;
+  border-bottom: white 1px solid;
+}
+
+.gallery-info p {
+  margin-bottom: 3px;
 }
 
 .gallery-title {

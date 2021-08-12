@@ -82,11 +82,11 @@ function Compare(props) {
     }
     
     return(
-        <div>
+        <div id="compare">
             <h2>Compare</h2>
             <div className="gallery-info">
                 <div className="gallery-title">
-                    <h4><strong>Gallery Title:</strong> {currGallery.title}</h4>
+                    <p><strong>Gallery Title:</strong> {currGallery.title}</p>
                 </div>
                 <div classname="round-count">
                     <p><strong>Round:</strong> {roundCount}</p>
