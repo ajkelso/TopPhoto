@@ -40,7 +40,7 @@ function Galleries(){
         <div>
             <h4>Galleries</h4>
     
-            { galleries.length ? <div className="user-galleries">{renderGalleries()}</div> : null }
+            { galleries.length ? <div className="user-galleries">{renderGalleries()}</div> : <Redirect to='/profile' /> }
         </div>
     )
 }
