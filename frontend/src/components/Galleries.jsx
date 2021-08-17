@@ -39,8 +39,8 @@ function Galleries(){
     return(
         <div>
             <h4>Galleries</h4>
-            { galleries.length === 0 ? <Redirect to="/profile"/> : null}
-            { !galleries.length && galleries === true  ? null : <div className="user-galleries">{renderGalleries()}</div> }
+    
+            { galleries.length ? <div className="user-galleries">{renderGalleries()}</div> : null }
         </div>
     )
 }
