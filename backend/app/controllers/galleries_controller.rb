@@ -14,17 +14,6 @@ class GalleriesController < ApplicationController
         render json: { post_urls: post_urls, gallery_id: gallery.id } 
     end
 
-
-
-    #     @gallery = Gallery.create(user_id: @user.id, title: (gallery_params[:title] == "" ? "Gallery #{current_user.galleries.length + 1}" : gallery_params[:title]))
-        
-    #     gallery_params[:images].map do |img|
-    #         Photo.create(image: img, gallery_id: @gallery.id) # attaches the uploaded file
-    #     end
-    #     render json: { gallery: GallerySerializer.new(@gallery), message: "Gallery Successfully Created!" }, status: :created 
-        
-    # end
-
     def show
         @gallery = Gallery.find_by(id: params[:id])
         if @gallery && @gallery.user_id == current_user.id
@@ -48,18 +37,6 @@ class GalleriesController < ApplicationController
     def gallery_params
         params.permit(:id, :title, images: [])
     end
-
-    # def serialize_gallery_thumbs(galleries)
-    #     galleries.map do |gal|
-    #         if gal.photos.length != 0
-    #             {
-    #             id: gal.id, 
-    #             title: gal.title, 
-    #             cover: gal.photos[0].image_url
-    #             }
-    #         end
-    #     end
-    # end
 
     def create_photos(gallery_id)
         params[:images].each do |img|
