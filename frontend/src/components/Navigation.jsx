@@ -13,7 +13,7 @@ export default function Navigation() {
         return(
             <Nav className="d-flex align-items-center">   
                 <Nav.Link as={NavLink} to="/profile"><p className="d-flex align-items-center">Profile</p></Nav.Link>
-                {user.galleries ? <Nav.Link as={NavLink} to='/my-galleries'><p className="navi-link">Galleries</p></Nav.Link>: null}
+                {user.galleries.length ? <Nav.Link as={NavLink} to='/my-galleries'><p className="navi-link">Galleries</p></Nav.Link>: null}
                 <Nav.Link as={NavLink} to="/galleries/new"><p className="navi-link">Upload</p></Nav.Link>
                 <Nav.Link as={NavLink} to='/logout'><p className="navi-link">Logout</p></Nav.Link>
             </Nav>  

@@ -8,6 +8,11 @@ export function userReducer(state = {}, action) {
                 ...state,
                 galleries: action.payload
             }
+        case 'ADD_GALLERY_TO_USER' :
+            return {
+                ...state,
+                galleries: [...state.galleries, action.payload]
+            }
         case 'DELETE_GALLERY' :
             return {
                 ...state,

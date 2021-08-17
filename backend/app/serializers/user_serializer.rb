@@ -6,7 +6,7 @@ class UserSerializer < ActiveModel::Serializer
     if object.galleries.length != 0
       serialize_gallery_thumbs(object.galleries)
     else
-      false
+      []
     end
   end
 end
