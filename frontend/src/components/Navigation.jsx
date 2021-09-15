@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { useSelector } from 'react-redux'
-// import topPhotoLogo from '.../public/TopPhotoLogo.png'
 
 export default function Navigation() {
 

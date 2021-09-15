@@ -1,7 +1,5 @@
 class GalleriesController < ApplicationController
 
-    include CommonGallery
-
     def index
         @galleries = Gallery.where(user_id: params[:user_id])
         render json: {galleries: serialize_gallery_thumbs(@galleries)}
@@ -48,6 +46,18 @@ class GalleriesController < ApplicationController
             post_url = signer.presigned_url(:put_object, bucket: "topphoto", key: key, acl: 'public-read', content_type: file_type)
             get_url = "https://topphoto.s3-us-east-2.amazonaws.com/#{key}"
             Photo.create(gallery_id: gallery_id, name: filename, file_type: file_type, image_url: get_url, post_url: post_url)
+        end
+    end
+
+    def serialize_gallery_thumbs(galleries)
+        galleries.map do |gal|
+          if gal.photos.length != 0
+            {
+            id: gal.id, 
+            title: gal.title, 
+            cover: gal.photos[0].image_url
+            }
+          end
         end
     end
 
