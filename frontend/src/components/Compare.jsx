@@ -19,7 +19,10 @@ function Compare(props) {
     }, [roundCount])
     
     const handlePhotoClick = (e) => {
-        upvoteRequest(parseInt(e.target.getAttribute('reject')))
+        const rejectedId = parseInt(e.target.getAttribute('reject'))
+        if(rejectedId){
+            upvoteRequest(rejectedId)
+        }
         setGalPos(galPos + 2)
     }
 
@@ -32,7 +35,7 @@ function Compare(props) {
     const renderComparison = () => {
         const imageA = () => {
             if(galPos < currGallery.photos.length){
-                return <img className="photo-contest" reject={currGallery.photos[galPos + 1].id || null} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
+                return <img className="photo-contest" reject={currGallery.photos[galPos + 1] ? currGallery.photos[galPos + 1].id : null} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
             } else if (currGallery.photos.length > 2) {
                 return (
                     <div className="complete">
