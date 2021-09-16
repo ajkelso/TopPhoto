@@ -71,8 +71,10 @@ function Compare(props) {
             if (currGallery.photos.length === 1){
                 return(
                     <div id="fav-photo">
-                        <h3>Your favorite photo is:</h3>
-                        <img className="favorite-photo" id={currGallery.photos[0].id} onClick={handlePhotoClick} src={currGallery.photos[0].url} alt="Favorite Photo"/>
+                        <div>
+                            <h3>Your favorite photo is:</h3>
+                            <img className="favorite-photo" id={currGallery.photos[0].id} onClick={handlePhotoClick} src={currGallery.photos[0].url} alt="Favorite Photo"/>
+                        </div>
                     </div>
                 )
             } else {
