@@ -57,7 +57,7 @@ function Compare(props) {
             if(galPos + 1 < currGallery.photos.length){
                 return <img className="photo-contest" reject={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
             } else if (galPos < currGallery.photos.length){
-                return <Button variant="outline-secondary" className="complete" onClick={() => setGalPos(galPos + 1)}>Skip</Button>
+                return <Button variant="outline-secondary" className="complete" reject={currGallery.photos[galPos].id} onClick={handlePhotoClick}>Skip</Button>
             }
         }
 
