@@ -19,7 +19,7 @@ function Compare(props) {
     }, [roundCount])
     
     const handlePhotoClick = (e) => {
-        upvoteRequest(e.target.defeatedId)
+        upvoteRequest(parseInt(e.target.getAttribute('reject')))
         setGalPos(galPos + 2)
     }
 
@@ -32,7 +32,7 @@ function Compare(props) {
     const renderComparison = () => {
         const imageA = () => {
             if(galPos < currGallery.photos.length){
-                return <img className="photo-contest" defeatedId={currGallery.photos[galPos + 1].id} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
+                return <img className="photo-contest" reject={currGallery.photos[galPos + 1].id || null} onClick={handlePhotoClick} src={currGallery.photos[galPos].url} alt="photo 1"/>
             } else if (currGallery.photos.length > 2) {
                 return (
                     <div className="complete">
@@ -52,7 +52,7 @@ function Compare(props) {
 
         const imageB = () => {
             if(galPos + 1 < currGallery.photos.length){
-                return <img className="photo-contest" defeatedId={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
+                return <img className="photo-contest" reject={currGallery.photos[galPos].id} onClick={handlePhotoClick} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
             } else if (galPos < currGallery.photos.length){
                 return <Button variant="outline-secondary" className="complete" onClick={() => setGalPos(galPos + 1)}>Skip</Button>
             }
