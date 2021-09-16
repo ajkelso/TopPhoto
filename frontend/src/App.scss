@@ -104,24 +104,24 @@
   flex-direction: row;
   justify-content: space-evenly;
   pointer-events: none;
-  margin-top: 2em;
+  width: 80%;
+  margin: 3em auto;
 }
 
 #battle-zone > * {
   pointer-events: auto;
   transition: 300ms opacity, 300ms transform;
-
 }
 
 #battle-zone:hover > *:not(.complete) {
-  transform: scale(0.8);
+  transform: scale(0.9);
   opacity: 0.6;
   border: 3px solid rgb(98, 98, 98);
   padding: none;
 }
 
 #battle-zone:hover > *:not(.complete):hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   opacity: 1;
   border: 3px solid white;
   padding: none;

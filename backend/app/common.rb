@@ -7,7 +7,7 @@ module CommonGallery
                 title: gal.title, 
                 cover: gal.photos[0].image_url
                 }
-            end
+            end`
         end
     end
 end
