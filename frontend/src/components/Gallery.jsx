@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Gallery ({id, title, cover}){
+function Gallery ({id, title, cover, handleGalleryClick}){
 
 
 
