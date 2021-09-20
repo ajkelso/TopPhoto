@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, useHistory } from 'react-router'
 import { deleteGallery, getGalleries } from '../redux/actions/galleryActions'
-import Button from 'react-bootstrap/Button'
 import Gallery from './Gallery'
 
 function Galleries(){
@@ -27,22 +26,13 @@ function Galleries(){
 
     const renderGalleries = () => {
         return galleries.map(gal => (
-            <Gallery key={gal.id} cover={gal.cover} title={gal.title} id={gal.id} handleGalleryClick={handleGalleryClick} />
-
-            // <div className="gallery" key={gal.id}>
-            //     <h5>{gal.title}</h5>
-            //     <div className="clickable-image"> 
-            //         <img src={gal.cover} alt={gal.title} className="gallery-cover" id={gal.id} onClick={handleGalleryClick} width="200px" height="auto"/>
-            //     </div>
-            //     <Button variant="outline-secondary" size="sm" id={gal.id} onClick={handleDelete}>Delete</Button>
-            // </div>
+            <Gallery key={gal.id} cover={gal.cover} title={gal.title} id={gal.id} handleGalleryClick={handleGalleryClick} handleDelete={handleDelete}/>
         ))
     }
 
     return(
         <div>
             <h4>Galleries</h4>
-    
             { galleries.length ? <div className="user-galleries">{renderGalleries()}</div> : <Redirect to='/profile' /> }
         </div>
     )
