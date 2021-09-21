@@ -11,7 +11,7 @@ function Profile() {
 
     useEffect(() => {
         dispatch(getUser())
-    }, [])
+    }, [dispatch])
 
     return(
         <div>
