@@ -16,7 +16,7 @@ function Compare(props) {
     
     useEffect(() => {
         dispatch(getGalleryPhotos(props.match.params.id, setCurrGallery))
-    }, [roundCount])
+    }, [dispatch, roundCount, props.match.params.id])
     
     const rejectOtherPhoto = (e) => {
         const rejectedId = parseInt(e.target.getAttribute('reject'))
