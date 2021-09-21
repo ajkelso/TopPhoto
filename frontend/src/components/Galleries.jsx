@@ -13,7 +13,7 @@ function Galleries(){
 
     useEffect(() => {
         dispatch(getGalleries(userId))
-    }, [])
+    }, [dispatch, userId])
 
     const handleGalleryClick = (e) => {
         history.push(`/galleries/${e.target.id}`)
