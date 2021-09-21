@@ -1,5 +1,3 @@
-import { setToken } from "./localStorage"
-
 const URL = 'http://localhost:3000/'
 const parseJSON = res => res.json()
 const loginHeaders = {
