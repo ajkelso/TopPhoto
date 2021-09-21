@@ -33,7 +33,7 @@ function Compare(props) {
     const renderComparison = () => {
         const imageA = () => {
             if(galPos < currGallery.photos.length){
-                return <img className={`photo-contest`} reject={currGallery.photos[galPos + 1] ? currGallery.photos[galPos + 1].id : null} onClick={rejectOtherPhoto} src={currGallery.photos[galPos].url} alt="photo 1"/>
+                return <img className={`photo-contest`} reject={currGallery.photos[galPos + 1] ? currGallery.photos[galPos + 1].id : null} onClick={rejectOtherPhoto} src={currGallery.photos[galPos].url} alt="option 1"/>
             } else if (currGallery.photos.length > 2) {
                 return (
                     <div className="complete">
@@ -53,7 +53,7 @@ function Compare(props) {
 
         const imageB = () => {
             if(galPos + 1 < currGallery.photos.length){
-                return <img className="photo-contest" reject={currGallery.photos[galPos].id} onClick={rejectOtherPhoto} src={currGallery.photos[galPos + 1].url} alt="photo 2"/>
+                return <img className="photo-contest" reject={currGallery.photos[galPos].id} onClick={rejectOtherPhoto} src={currGallery.photos[galPos + 1].url} alt="option 2"/>
             } else if (galPos < currGallery.photos.length){
                 return <Button variant="outline-secondary" className="complete" reject={currGallery.photos[galPos].id} onClick={rejectOtherPhoto}>Skip</Button>
             }
@@ -74,7 +74,7 @@ function Compare(props) {
                     <div id="fav-photo">
                         <div>
                             <h3>Your favorite photo is:</h3>
-                            <img className="favorite-photo" id={currGallery.photos[0].id} onClick={rejectOtherPhoto} src={currGallery.photos[0].url} alt="Favorite Photo"/>
+                            <img className="favorite-photo" id={currGallery.photos[0].id} src={currGallery.photos[0].url} alt="Favorite"/>
                         </div>
                     </div>
                 )
